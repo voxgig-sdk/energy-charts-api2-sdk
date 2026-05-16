@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://www.freepublicapis.com/api/random"
+      }
+      description: "Provides access to energy data. Allows users to retrieve and analyze energy consumption information."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.energy-charts.info"
+        }
+      ]
+      title: "Energy-Charts API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

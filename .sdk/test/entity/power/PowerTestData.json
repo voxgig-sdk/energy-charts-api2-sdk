@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "power": {
+      "POWER00": {
+        "data": [],
+        "name": "s15"
+      },
+      "POWER01": {
+        "data": [],
+        "name": "s29"
+      },
+      "POWER02": {
+        "data": [],
+        "name": "s3d"
+      }
+    }
+  },
+  "new": {
+    "power": {
+      "power_ref01": {
+        "data": [],
+        "name": "s51"
+      }
+    }
+  }
+}
