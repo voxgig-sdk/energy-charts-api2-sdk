@@ -6,7 +6,7 @@ import (
 	vs "github.com/voxgig-sdk/energy-charts-api2-sdk/go/utility/struct"
 )
 
-type PowerEntity struct {
+type PublicPowerEntity struct {
 	name    string
 	client  *core.EnergyChartsApi2SDK
 	utility *core.Utility
@@ -16,7 +16,7 @@ type PowerEntity struct {
 	entctx  *core.Context
 }
 
-func NewPowerEntity(client *core.EnergyChartsApi2SDK, entopts map[string]any) *PowerEntity {
+func NewPublicPowerEntity(client *core.EnergyChartsApi2SDK, entopts map[string]any) *PublicPowerEntity {
 	if entopts == nil {
 		entopts = map[string]any{}
 	}
@@ -28,8 +28,8 @@ func NewPowerEntity(client *core.EnergyChartsApi2SDK, entopts map[string]any) *P
 		entopts["active"] = true
 	}
 
-	e := &PowerEntity{
-		name:    "power",
+	e := &PublicPowerEntity{
+		name:    "public_power",
 		client:  client,
 		utility: client.GetUtility(),
 		entopts: entopts,
@@ -47,17 +47,17 @@ func NewPowerEntity(client *core.EnergyChartsApi2SDK, entopts map[string]any) *P
 	return e
 }
 
-func (e *PowerEntity) GetName() string { return e.name }
+func (e *PublicPowerEntity) GetName() string { return e.name }
 
-func (e *PowerEntity) Make() core.Entity {
+func (e *PublicPowerEntity) Make() core.Entity {
 	opts := map[string]any{}
 	for k, v := range e.entopts {
 		opts[k] = v
 	}
-	return NewPowerEntity(e.client, opts)
+	return NewPublicPowerEntity(e.client, opts)
 }
 
-func (e *PowerEntity) Data(args ...any) any {
+func (e *PublicPowerEntity) Data(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.data = core.ToMapAny(vs.Clone(args[0]))
 		if e.data == nil {
@@ -71,7 +71,7 @@ func (e *PowerEntity) Data(args ...any) any {
 	return out
 }
 
-func (e *PowerEntity) Match(args ...any) any {
+func (e *PublicPowerEntity) Match(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.match = core.ToMapAny(vs.Clone(args[0]))
 		if e.match == nil {
@@ -85,13 +85,13 @@ func (e *PowerEntity) Match(args ...any) any {
 	return out
 }
 
-func (e *PowerEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
+func (e *PublicPowerEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
 
 
 
-func (e *PowerEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *PublicPowerEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
 		"opname":   "list",
@@ -112,22 +112,22 @@ func (e *PowerEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, e
 
 
 
-func (e *PowerEntity) Create(_ map[string]any, _ map[string]any) (any, error) {
+func (e *PublicPowerEntity) Create(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("create", e.name)
 }
 
 
-func (e *PowerEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
+func (e *PublicPowerEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("update", e.name)
 }
 
 
-func (e *PowerEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
+func (e *PublicPowerEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("remove", e.name)
 }
 
 
-func (e *PowerEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
+func (e *PublicPowerEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
 	utility := e.utility
 
 	utility.FeatureHook(ctx, "PrePoint")

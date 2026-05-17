@@ -22,11 +22,11 @@ module EnergyChartsApi2Config
           "content-type" => "application/json",
         },
         "entity" => {
-          "power" => {},
+          "public_power" => {},
         },
       },
       "entity" => {
-        "power" => {
+        "public_power" => {
           "fields" => [
             {
               "name" => "data",
@@ -43,7 +43,7 @@ module EnergyChartsApi2Config
               "index$" => 1,
             },
           ],
-          "name" => "power",
+          "name" => "public_power",
           "op" => {
             "list" => {
               "name" => "list",
@@ -79,9 +79,9 @@ module EnergyChartsApi2Config
                     ],
                   },
                   "method" => "GET",
-                  "orig" => "/power",
+                  "orig" => "/public_power",
                   "parts" => [
-                    "power",
+                    "public_power",
                   ],
                   "select" => {
                     "exist" => [

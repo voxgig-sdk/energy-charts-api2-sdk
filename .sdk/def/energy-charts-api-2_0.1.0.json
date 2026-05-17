@@ -15,7 +15,7 @@
     }
   ],
   "paths": {
-    "/power": {
+    "/public_power": {
       "get": {
         "summary": "Get power generation data",
         "description": "Retrieves power generation and consumption data for energy analysis",

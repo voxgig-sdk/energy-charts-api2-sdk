@@ -1,23 +1,23 @@
 {
   "existing": {
-    "power": {
-      "POWER00": {
+    "public_power": {
+      "PUBLIC_POWER00": {
         "data": [],
         "name": "s15"
       },
-      "POWER01": {
+      "PUBLIC_POWER01": {
         "data": [],
         "name": "s29"
       },
-      "POWER02": {
+      "PUBLIC_POWER02": {
         "data": [],
         "name": "s3d"
       }
     }
   },
   "new": {
-    "power": {
-      "power_ref01": {
+    "public_power": {
+      "public_power_ref01": {
         "data": [],
         "name": "s51"
       }

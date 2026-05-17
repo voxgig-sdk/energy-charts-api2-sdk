@@ -1,4 +1,4 @@
--- Power entity test
+-- PublicPower entity test
 
 local json = require("dkjson")
 local vs = require("utility.struct.struct")
@@ -8,19 +8,19 @@ local runner = require("test.runner")
 
 local _test_dir = debug.getinfo(1, "S").source:match("^@(.+/)")  or "./"
 
-describe("PowerEntity", function()
+describe("PublicPowerEntity", function()
   it("should create instance", function()
     local testsdk = sdk.test(nil, nil)
-    local ent = testsdk:Power(nil)
+    local ent = testsdk:PublicPower(nil)
     assert.is_not_nil(ent)
   end)
 
   it("should run basic flow", function()
-    local setup = power_basic_setup(nil)
+    local setup = public_power_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
     for _, _op in ipairs({"list"}) do
-      local _should_skip, _reason = runner.is_control_skipped("entityOp", "power." .. _op, _live and "live" or "unit")
+      local _should_skip, _reason = runner.is_control_skipped("entityOp", "public_power." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
         return
@@ -29,37 +29,37 @@ describe("PowerEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set ENERGYCHARTSAPI__TEST_POWER_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID JSON to run live")
       return
     end
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
-    local power_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.power")))
-    local power_ref01_data = nil
-    if #power_ref01_data_raw > 0 then
-      power_ref01_data = helpers.to_map(power_ref01_data_raw[1][2])
+    local public_power_ref01_data_raw = vs.items(helpers.to_map(
+      vs.getpath(setup.data, "existing.public_power")))
+    local public_power_ref01_data = nil
+    if #public_power_ref01_data_raw > 0 then
+      public_power_ref01_data = helpers.to_map(public_power_ref01_data_raw[1][2])
     end
 
     -- LIST
-    local power_ref01_ent = client:Power(nil)
-    local power_ref01_match = {}
+    local public_power_ref01_ent = client:PublicPower(nil)
+    local public_power_ref01_match = {}
 
-    local power_ref01_list_result, err = power_ref01_ent:list(power_ref01_match, nil)
+    local public_power_ref01_list_result, err = public_power_ref01_ent:list(public_power_ref01_match, nil)
     assert.is_nil(err)
-    assert.is_table(power_ref01_list_result)
+    assert.is_table(public_power_ref01_list_result)
 
   end)
 end)
 
-function power_basic_setup(extra)
+function public_power_basic_setup(extra)
   runner.load_env_local()
 
-  local entity_data_file = _test_dir .. "../../.sdk/test/entity/power/PowerTestData.json"
+  local entity_data_file = _test_dir .. "../../.sdk/test/entity/public_power/PublicPowerTestData.json"
   local f = io.open(entity_data_file, "r")
   if f == nil then
-    error("failed to read power test data: " .. entity_data_file)
+    error("failed to read public_power test data: " .. entity_data_file)
   end
   local entity_data_source = f:read("*a")
   f:close()
@@ -73,7 +73,7 @@ function power_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "power01", "power02", "power03" },
+    { "public_power01", "public_power02", "public_power03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",
@@ -85,18 +85,18 @@ function power_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("ENERGYCHARTSAPI__TEST_POWER_ENTID")
+  local entid_env_raw = os.getenv("ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["ENERGYCHARTSAPI__TEST_POWER_ENTID"] = idmap,
+    ["ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID"] = idmap,
     ["ENERGYCHARTSAPI__TEST_LIVE"] = "FALSE",
     ["ENERGYCHARTSAPI__TEST_EXPLAIN"] = "FALSE",
     ["ENERGYCHARTSAPI__APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["ENERGYCHARTSAPI__TEST_POWER_ENTID"])
+    env["ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end

@@ -6,5 +6,5 @@ var NewBaseFeatureFunc func() Feature
 
 var NewTestFeatureFunc func() Feature
 
-var NewPowerEntityFunc func(client *EnergyChartsApi2SDK, entopts map[string]any) EnergyChartsApi2Entity
+var NewPublicPowerEntityFunc func(client *EnergyChartsApi2SDK, entopts map[string]any) EnergyChartsApi2Entity
 

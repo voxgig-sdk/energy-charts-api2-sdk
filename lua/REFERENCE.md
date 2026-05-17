@@ -41,9 +41,9 @@ local client = sdk.test(nil, nil)
 
 ### Instance Methods
 
-#### `Power(data)`
+#### `PublicPower(data)`
 
-Create a new `Power` entity instance. Pass `nil` for no initial data.
+Create a new `PublicPower` entity instance. Pass `nil` for no initial data.
 
 #### `options_map() -> table`
 
@@ -81,10 +81,10 @@ same parameters as `direct()`.
 
 ---
 
-## PowerEntity
+## PublicPowerEntity
 
 ```lua
-local power = client:Power(nil)
+local public_power = client:PublicPower(nil)
 ```
 
 ### Fields
@@ -101,7 +101,7 @@ local power = client:Power(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Power(nil):list(nil, nil)
+local results, err = client:PublicPower(nil):list(nil, nil)
 ```
 
 ### Common Methods
@@ -124,7 +124,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `PowerEntity` instance with the same client and
+Create a new `PublicPowerEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

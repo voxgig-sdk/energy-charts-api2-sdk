@@ -223,10 +223,10 @@ class EnergyChartsApi2SDK
     }
 
 
-    public function Power($data = null)
+    public function PublicPower($data = null)
     {
-        require_once __DIR__ . '/entity/power_entity.php';
-        return new PowerEntity($this, $data);
+        require_once __DIR__ . '/entity/public_power_entity.php';
+        return new PublicPowerEntity($this, $data);
     }
 
 

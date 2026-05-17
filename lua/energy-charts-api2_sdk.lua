@@ -244,8 +244,8 @@ end
 
 
 
-function EnergyChartsApi2SDK:Power(data)
-  local EntityMod = require("entity.power_entity")
+function EnergyChartsApi2SDK:PublicPower(data)
+  local EntityMod = require("entity.public_power_entity")
   return EntityMod.new(self, data)
 end
 

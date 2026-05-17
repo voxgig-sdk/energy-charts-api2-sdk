@@ -16,7 +16,7 @@ import {
 } from '../../utility'
 
 
-describe('PowerDirect', async () => {
+describe('PublicPowerDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
   // `test.live.delayMs`; only sleeps when ENERGYCHARTSAPI2_TEST_LIVE=TRUE.
@@ -31,16 +31,16 @@ describe('PowerDirect', async () => {
   })
 
 
-  test('direct-list-power', async (t: any) => {
+  test('direct-list-public_power', async (t: any) => {
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-power', setup.live)) return
+    if (maybeSkipControl(t, 'direct', 'direct-list-public_power', setup.live)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
 
     const result: any = await client.direct({
-      path: 'power',
+      path: 'public_power',
       method: 'GET',
       params,
       query,
@@ -77,7 +77,7 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'ENERGYCHARTSAPI__TEST_POWER_ENTID': {},
+    'ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID': {},
     'ENERGYCHARTSAPI__TEST_LIVE': 'FALSE',
     'ENERGYCHARTSAPI__APIKEY': 'NONE',
   })
@@ -89,7 +89,7 @@ function directSetup(mockres?: any) {
       apikey: env.ENERGYCHARTSAPI__APIKEY,
     })
 
-    let idmap: any = env['ENERGYCHARTSAPI__TEST_POWER_ENTID']
+    let idmap: any = env['ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

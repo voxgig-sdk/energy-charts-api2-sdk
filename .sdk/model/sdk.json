@@ -27,7 +27,7 @@
         }
       },
       "entity": {
-        "power": {
+        "public_power": {
           "alias": {
             "field": {}
           },
@@ -45,7 +45,7 @@
               "active": true
             }
           ],
-          "name": "power",
+          "name": "public_power",
           "op": {
             "list": {
               "name": "list",
@@ -81,9 +81,9 @@
                     ]
                   },
                   "method": "GET",
-                  "orig": "/power",
+                  "orig": "/public_power",
                   "parts": [
-                    "power"
+                    "public_power"
                   ],
                   "select": {
                     "exist": [
@@ -197,10 +197,10 @@
         }
       },
       "flow": {
-        "BasicPowerFlow": {
-          "entity": "power",
+        "BasicPublicPowerFlow": {
+          "entity": "public_power",
           "kind": "basic",
-          "name": "BasicPowerFlow",
+          "name": "BasicPublicPowerFlow",
           "step": [
             {
               "op": "list",
@@ -208,7 +208,7 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "power_ref01"
+                    "ref": "public_power_ref01"
                   }
                 }
               ],
@@ -219,7 +219,7 @@
               "spec": []
             }
           ],
-          "key$": "BasicPowerFlow",
+          "key$": "BasicPublicPowerFlow",
           "active": true,
           "param": {}
         }

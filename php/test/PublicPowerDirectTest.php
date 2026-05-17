@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-// Power direct test
+// PublicPower direct test
 
 require_once __DIR__ . '/../energychartsapi2_sdk.php';
 require_once __DIR__ . '/Runner.php';
 
 use PHPUnit\Framework\TestCase;
 
-class PowerDirectTest extends TestCase
+class PublicPowerDirectTest extends TestCase
 {
-    public function test_direct_list_power(): void
+    public function test_direct_list_public_power(): void
     {
-        $setup = power_direct_setup([
+        $setup = public_power_direct_setup([
             ["id" => "direct01"],
             ["id" => "direct02"],
         ]);
-        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-power", $setup["live"] ? "live" : "unit");
+        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-public_power", $setup["live"] ? "live" : "unit");
         if ($_shouldSkip) {
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
@@ -25,7 +25,7 @@ class PowerDirectTest extends TestCase
 
 
         [$result, $err] = $client->direct([
-            "path" => "power",
+            "path" => "public_power",
             "method" => "GET",
             "params" => [],
         ]);
@@ -59,14 +59,14 @@ class PowerDirectTest extends TestCase
 }
 
 
-function power_direct_setup($mockres)
+function public_power_direct_setup($mockres)
 {
     Runner::load_env_local();
 
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "ENERGYCHARTSAPI__TEST_POWER_ENTID" => [],
+        "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID" => [],
         "ENERGYCHARTSAPI__TEST_LIVE" => "FALSE",
         "ENERGYCHARTSAPI__APIKEY" => "NONE",
     ]);

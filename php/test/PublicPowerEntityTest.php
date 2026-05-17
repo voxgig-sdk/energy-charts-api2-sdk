@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// Power entity test
+// PublicPower entity test
 
 require_once __DIR__ . '/../energychartsapi2_sdk.php';
 require_once __DIR__ . '/Runner.php';
@@ -9,22 +9,22 @@ require_once __DIR__ . '/Runner.php';
 use PHPUnit\Framework\TestCase;
 use Voxgig\Struct\Struct as Vs;
 
-class PowerEntityTest extends TestCase
+class PublicPowerEntityTest extends TestCase
 {
     public function test_create_instance(): void
     {
         $testsdk = EnergyChartsApi2SDK::test(null, null);
-        $ent = $testsdk->Power(null);
+        $ent = $testsdk->PublicPower(null);
         $this->assertNotNull($ent);
     }
 
     public function test_basic_flow(): void
     {
-        $setup = power_basic_setup(null);
+        $setup = public_power_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
         foreach (["list"] as $_op) {
-            [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "power." . $_op, $_live ? "live" : "unit");
+            [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "public_power." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
                 return;
@@ -33,35 +33,35 @@ class PowerEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ENERGYCHARTSAPI__TEST_POWER_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
-        $power_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.power")));
-        $power_ref01_data = null;
-        if (count($power_ref01_data_raw) > 0) {
-            $power_ref01_data = Helpers::to_map($power_ref01_data_raw[0][1]);
+        $public_power_ref01_data_raw = Vs::items(Helpers::to_map(
+            Vs::getpath($setup["data"], "existing.public_power")));
+        $public_power_ref01_data = null;
+        if (count($public_power_ref01_data_raw) > 0) {
+            $public_power_ref01_data = Helpers::to_map($public_power_ref01_data_raw[0][1]);
         }
 
         // LIST
-        $power_ref01_ent = $client->Power(null);
-        $power_ref01_match = [];
+        $public_power_ref01_ent = $client->PublicPower(null);
+        $public_power_ref01_match = [];
 
-        [$power_ref01_list_result, $err] = $power_ref01_ent->list($power_ref01_match, null);
+        [$public_power_ref01_list_result, $err] = $public_power_ref01_ent->list($public_power_ref01_match, null);
         $this->assertNull($err);
-        $this->assertIsArray($power_ref01_list_result);
+        $this->assertIsArray($public_power_ref01_list_result);
 
     }
 }
 
-function power_basic_setup($extra)
+function public_power_basic_setup($extra)
 {
     Runner::load_env_local();
 
-    $entity_data_file = __DIR__ . '/../../.sdk/test/entity/power/PowerTestData.json';
+    $entity_data_file = __DIR__ . '/../../.sdk/test/entity/public_power/PublicPowerTestData.json';
     $entity_data_source = file_get_contents($entity_data_file);
     $entity_data = json_decode($entity_data_source, true);
 
@@ -72,25 +72,25 @@ function power_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["power01", "power02", "power03"] as $k) {
+    foreach (["public_power01", "public_power02", "public_power03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("ENERGYCHARTSAPI__TEST_POWER_ENTID");
+    $entid_env_raw = getenv("ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "ENERGYCHARTSAPI__TEST_POWER_ENTID" => $idmap,
+        "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID" => $idmap,
         "ENERGYCHARTSAPI__TEST_LIVE" => "FALSE",
         "ENERGYCHARTSAPI__TEST_EXPLAIN" => "FALSE",
         "ENERGYCHARTSAPI__APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["ENERGYCHARTSAPI__TEST_POWER_ENTID"]);
+        $env["ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }

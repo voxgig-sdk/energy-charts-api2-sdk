@@ -1,10 +1,10 @@
-# EnergyChartsApi2 SDK Power entity
+# EnergyChartsApi2 SDK PublicPower entity
 
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
 
 
-class PowerEntity:
+class PublicPowerEntity:
 
     def __init__(self, client, entopts=None):
         if entopts is None:
@@ -16,7 +16,7 @@ class PowerEntity:
         else:
             entopts["active"] = True
 
-        self._name = "power"
+        self._name = "public_power"
         self._client = client
         self._utility = client.get_utility()
         self._entopts = entopts
@@ -37,7 +37,7 @@ class PowerEntity:
         opts = {}
         for k, v in self._entopts.items():
             opts[k] = v
-        return PowerEntity(self._client, opts)
+        return PublicPowerEntity(self._client, opts)
 
     def data_set(self, args=None):
         if args is not None:

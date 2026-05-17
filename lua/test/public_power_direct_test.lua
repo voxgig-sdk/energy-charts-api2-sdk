@@ -1,4 +1,4 @@
--- Power direct test
+-- PublicPower direct test
 
 local json = require("dkjson")
 local vs = require("utility.struct.struct")
@@ -6,13 +6,13 @@ local sdk = require("energy-charts-api2_sdk")
 local helpers = require("core.helpers")
 local runner = require("test.runner")
 
-describe("PowerDirect", function()
-  it("should direct-list-power", function()
-    local setup = power_direct_setup({
+describe("PublicPowerDirect", function()
+  it("should direct-list-public_power", function()
+    local setup = public_power_direct_setup({
       { id = "direct01" },
       { id = "direct02" },
     })
-    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-list-power", setup.live and "live" or "unit")
+    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-list-public_power", setup.live and "live" or "unit")
     if _should_skip then
       pending(_reason or "skipped via sdk-test-control.json")
       return
@@ -21,7 +21,7 @@ describe("PowerDirect", function()
 
 
     local result, err = client:direct({
-      path = "power",
+      path = "public_power",
       method = "GET",
       params = {},
     })
@@ -55,13 +55,13 @@ describe("PowerDirect", function()
 end)
 
 
-function power_direct_setup(mockres)
+function public_power_direct_setup(mockres)
   runner.load_env_local()
 
   local calls = {}
 
   local env = runner.env_override({
-    ["ENERGYCHARTSAPI__TEST_POWER_ENTID"] = {},
+    ["ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID"] = {},
     ["ENERGYCHARTSAPI__TEST_LIVE"] = "FALSE",
     ["ENERGYCHARTSAPI__APIKEY"] = "NONE",
   })

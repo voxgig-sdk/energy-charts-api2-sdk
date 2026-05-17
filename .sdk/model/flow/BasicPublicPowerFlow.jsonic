@@ -1,0 +1,22 @@
+# BasicPublicPowerFlow
+
+main: kit: flow: BasicPublicPowerFlow:
+{
+  entity: "public_power",
+  kind: "basic",
+  name: "BasicPublicPowerFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "public_power_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPublicPowerFlow"
+}

@@ -42,9 +42,9 @@ $client = EnergyChartsApi2SDK::test();
 
 ### Instance Methods
 
-#### `Power($data = null)`
+#### `PublicPower($data = null)`
 
-Create a new `PowerEntity` instance. Pass `null` for no initial data.
+Create a new `PublicPowerEntity` instance. Pass `null` for no initial data.
 
 #### `optionsMap(): array`
 
@@ -79,10 +79,10 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 
 ---
 
-## PowerEntity
+## PublicPowerEntity
 
 ```php
-$power = $client->Power();
+$public_power = $client->PublicPower();
 ```
 
 ### Fields
@@ -99,7 +99,7 @@ $power = $client->Power();
 List entities matching the given criteria. Returns an array.
 
 ```php
-[$results, $err] = $client->Power()->list([]);
+[$results, $err] = $client->PublicPower()->list([]);
 ```
 
 ### Common Methods
@@ -120,9 +120,9 @@ Get the entity match criteria.
 
 Set the entity match criteria.
 
-#### `make(): PowerEntity`
+#### `make(): PublicPowerEntity`
 
-Create a new `PowerEntity` instance with the same client and
+Create a new `PublicPowerEntity` instance with the same client and
 options.
 
 #### `getName(): string`

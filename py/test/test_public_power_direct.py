@@ -1,4 +1,4 @@
-# Power direct test
+# PublicPower direct test
 
 import json
 import pytest
@@ -9,14 +9,14 @@ from core import helpers
 from test import runner
 
 
-class TestPowerDirect:
+class TestPublicPowerDirect:
 
-    def test_should_direct_list_power(self):
-        setup = _power_direct_setup([
+    def test_should_direct_list_public_power(self):
+        setup = _public_power_direct_setup([
             {"id": "direct01"},
             {"id": "direct02"},
         ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-power", "live" if setup["live"] else "unit")
+        _skip, _reason = runner.is_control_skipped("direct", "direct-list-public_power", "live" if setup["live"] else "unit")
         if _skip:
             # pytest already imported at module scope
             pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -25,7 +25,7 @@ class TestPowerDirect:
 
 
         result, err = client.direct({
-            "path": "power",
+            "path": "public_power",
             "method": "GET",
             "params": {},
         })
@@ -53,13 +53,13 @@ class TestPowerDirect:
 
 
 
-def _power_direct_setup(mockres):
+def _public_power_direct_setup(mockres):
     runner.load_env_local()
 
     calls = []
 
     env = runner.env_override({
-        "ENERGYCHARTSAPI__TEST_POWER_ENTID": {},
+        "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID": {},
         "ENERGYCHARTSAPI__TEST_LIVE": "FALSE",
         "ENERGYCHARTSAPI__APIKEY": "NONE",
     })

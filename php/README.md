@@ -25,10 +25,10 @@ $client = new EnergyChartsApi2SDK([
 ]);
 ```
 
-### 2. List powers
+### 2. List publicpowers
 
 ```php
-[$result, $err] = $client->Power(null)->list(null, null);
+[$result, $err] = $client->PublicPower(null)->list(null, null);
 if ($err) { throw new \Exception($err); }
 
 if (is_array($result)) {
@@ -166,7 +166,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Power` | `($data): PowerEntity` | Create a Power entity instance. |
+| `PublicPower` | `($data): PublicPowerEntity` | Create a PublicPower entity instance. |
 
 ### Entity interface
 
@@ -202,7 +202,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 ### Entities
 
-#### Power
+#### PublicPower
 
 | Field | Description |
 | --- | --- |
@@ -211,16 +211,16 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 Operations: List.
 
-API path: `/power`
+API path: `/public_power`
 
 
 
 ## Entities
 
 
-### Power
+### PublicPower
 
-Create an instance: `const power = client.Power()`
+Create an instance: `const public_power = client.PublicPower()`
 
 #### Operations
 
@@ -238,7 +238,7 @@ Create an instance: `const power = client.Power()`
 #### Example: List
 
 ```ts
-const powers = await client.Power().list()
+const public_powers = await client.PublicPower().list()
 ```
 
 

@@ -1,13 +1,13 @@
--- EnergyChartsApi2 SDK Power entity
+-- EnergyChartsApi2 SDK PublicPower entity
 
 local vs = require("utility.struct.struct")
 local helpers = require("core.helpers")
 
-local PowerEntity = {}
-PowerEntity.__index = PowerEntity
+local PublicPowerEntity = {}
+PublicPowerEntity.__index = PublicPowerEntity
 
 
-function PowerEntity.new(client, entopts)
+function PublicPowerEntity.new(client, entopts)
   entopts = entopts or {}
   if entopts["active"] == nil then
     entopts["active"] = true
@@ -17,8 +17,8 @@ function PowerEntity.new(client, entopts)
     entopts["active"] = true
   end
 
-  local self = setmetatable({}, PowerEntity)
-  self._name = "power"
+  local self = setmetatable({}, PublicPowerEntity)
+  self._name = "public_power"
   self._client = client
   self._utility = client:get_utility()
   self._entopts = entopts
@@ -36,21 +36,21 @@ function PowerEntity.new(client, entopts)
 end
 
 
-function PowerEntity:get_name()
+function PublicPowerEntity:get_name()
   return self._name
 end
 
 
-function PowerEntity:make()
+function PublicPowerEntity:make()
   local opts = {}
   for k, v in pairs(self._entopts) do
     opts[k] = v
   end
-  return PowerEntity.new(self._client, opts)
+  return PublicPowerEntity.new(self._client, opts)
 end
 
 
-function PowerEntity:data_set(args)
+function PublicPowerEntity:data_set(args)
   if args ~= nil then
     self._data = helpers.to_map(vs.clone(args)) or {}
     self._utility.feature_hook(self._entctx, "SetData")
@@ -58,13 +58,13 @@ function PowerEntity:data_set(args)
 end
 
 
-function PowerEntity:data_get()
+function PublicPowerEntity:data_get()
   self._utility.feature_hook(self._entctx, "GetData")
   return vs.clone(self._data)
 end
 
 
-function PowerEntity:match_set(args)
+function PublicPowerEntity:match_set(args)
   if args ~= nil then
     self._match = helpers.to_map(vs.clone(args)) or {}
     self._utility.feature_hook(self._entctx, "SetMatch")
@@ -72,7 +72,7 @@ function PowerEntity:match_set(args)
 end
 
 
-function PowerEntity:match_get()
+function PublicPowerEntity:match_get()
   self._utility.feature_hook(self._entctx, "GetMatch")
   return vs.clone(self._match)
 end
@@ -81,7 +81,7 @@ end
 
 
 
-function PowerEntity:list(reqmatch, ctrl)
+function PublicPowerEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
     opname = "list",
@@ -109,7 +109,7 @@ end
 
 
 
-function PowerEntity:_run_op(ctx, post_done)
+function PublicPowerEntity:_run_op(ctx, post_done)
   local utility = self._utility
 
   -- #PrePoint-Hook
@@ -164,4 +164,4 @@ function PowerEntity:_run_op(ctx, post_done)
 end
 
 
-return PowerEntity
+return PublicPowerEntity

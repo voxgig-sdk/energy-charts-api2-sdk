@@ -1,6 +1,6 @@
-# Entity: power
+# Entity: public_power
 
-main: kit: entity: power: {
+main: kit: entity: public_power: {
 
   alias: field: {}
 
@@ -17,7 +17,7 @@ main: kit: entity: power: {
     }
   ]
 
-  name: "power"
+  name: "public_power"
   op: {
     list: {
       name: "list"
@@ -50,9 +50,9 @@ main: kit: entity: power: {
             ]
           }
           method: "GET"
-          orig: "/power"
+          orig: "/public_power"
           parts: [
-            "power"
+            "public_power"
           ]
           select: {
             exist: [

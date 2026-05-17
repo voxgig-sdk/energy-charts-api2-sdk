@@ -32,8 +32,8 @@ func init() {
 	core.NewTestFeatureFunc = func() core.Feature {
 		return feature.NewTestFeature()
 	}
-	core.NewPowerEntityFunc = func(client *core.EnergyChartsApi2SDK, entopts map[string]any) core.EnergyChartsApi2Entity {
-		return entity.NewPowerEntity(client, entopts)
+	core.NewPublicPowerEntityFunc = func(client *core.EnergyChartsApi2SDK, entopts map[string]any) core.EnergyChartsApi2Entity {
+		return entity.NewPublicPowerEntity(client, entopts)
 	}
 }
 

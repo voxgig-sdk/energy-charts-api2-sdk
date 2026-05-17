@@ -48,7 +48,7 @@ class Config {
 
     entity: {
       
-      power: {
+      public_power: {
       },
 
     }
@@ -56,7 +56,7 @@ class Config {
 
 
   entity = {
-    "power": {
+    "public_power": {
       "fields": [
         {
           "name": "data",
@@ -73,7 +73,7 @@ class Config {
           "index$": 1
         }
       ],
-      "name": "power",
+      "name": "public_power",
       "op": {
         "list": {
           "name": "list",
@@ -109,9 +109,9 @@ class Config {
                 ]
               },
               "method": "GET",
-              "orig": "/power",
+              "orig": "/public_power",
               "parts": [
-                "power"
+                "public_power"
               ],
               "select": {
                 "exist": [

@@ -20,7 +20,7 @@ import (
 const prompt = "energy-charts-api2"
 
 // entitiesHelp is the space-separated entity list shown by :help.
-const entitiesHelp = "power"
+const entitiesHelp = "public_power"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

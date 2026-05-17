@@ -23,7 +23,7 @@ import {
 } from '../../utility'
 
 
-describe('PowerEntity', async () => {
+describe('PublicPowerEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
   // `test.live.delayMs`; only sleeps when ENERGYCHARTSAPI2_TEST_LIVE=TRUE.
@@ -31,7 +31,7 @@ describe('PowerEntity', async () => {
 
   test('instance', async () => {
     const testsdk = EnergyChartsApi2SDK.test()
-    const ent = testsdk.Power()
+    const ent = testsdk.PublicPower()
     assert(null != ent)
   })
 
@@ -40,7 +40,7 @@ describe('PowerEntity', async () => {
 
     const live = 'TRUE' === process.env.ENERGY_CHARTS_API__TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'power.' + op, live)) return
+      if (maybeSkipControl(t, 'entityOp', 'public_power.' + op, live)) return
     }
 
     const setup = basicSetup()
@@ -48,7 +48,7 @@ describe('PowerEntity', async () => {
     // fixture (entity TestData.json). Those don't exist on the live API.
     // Skip live runs unless the user provided a real ENTID env override.
     if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set ENERGY_CHARTS_API__TEST_POWER_ENTID JSON to run live')
+      t.skip('live entity test uses synthetic IDs from fixture — set ENERGY_CHARTS_API__TEST_PUBLIC_POWER_ENTID JSON to run live')
       return
     }
     const client = setup.client
@@ -57,13 +57,13 @@ describe('PowerEntity', async () => {
     const isempty = struct.isempty
     const select = struct.select
 
-    let power_ref01_data = Object.values(setup.data.existing.power)[0] as any
+    let public_power_ref01_data = Object.values(setup.data.existing.public_power)[0] as any
 
     // LIST
-    const power_ref01_ent = client.Power()
-    const power_ref01_match: any = {}
+    const public_power_ref01_ent = client.PublicPower()
+    const public_power_ref01_match: any = {}
 
-    const power_ref01_list = await power_ref01_ent.list(power_ref01_match)
+    const public_power_ref01_list = await public_power_ref01_ent.list(public_power_ref01_match)
 
 
   })
@@ -78,7 +78,7 @@ function basicSetup(extra?: any) {
   // TODO: needs test utility to resolve path
   const entityDataFile =
     Path.resolve(__dirname, 
-      '../../../../.sdk/test/entity/power/PowerTestData.json')
+      '../../../../.sdk/test/entity/public_power/PublicPowerTestData.json')
 
   // TODO: file ready util needed?
   const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
@@ -94,7 +94,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['power01','power02','power03'],
+    ['public_power01','public_power02','public_power03'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',
@@ -106,17 +106,17 @@ function basicSetup(extra?: any) {
   // basic flow consumes synthetic IDs from the fixture file; without an
   // override those synthetic IDs reach the live API and 4xx. Surface this
   // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['ENERGY_CHARTS_API__TEST_POWER_ENTID']
+  const idmapEnvVal = process.env['ENERGY_CHARTS_API__TEST_PUBLIC_POWER_ENTID']
   const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
 
   const env = envOverride({
-    'ENERGY_CHARTS_API__TEST_POWER_ENTID': idmap,
+    'ENERGY_CHARTS_API__TEST_PUBLIC_POWER_ENTID': idmap,
     'ENERGY_CHARTS_API__TEST_LIVE': 'FALSE',
     'ENERGY_CHARTS_API__TEST_EXPLAIN': 'FALSE',
     'ENERGY_CHARTS_API__APIKEY': 'NONE',
   })
 
-  idmap = env['ENERGY_CHARTS_API__TEST_POWER_ENTID']
+  idmap = env['ENERGY_CHARTS_API__TEST_PUBLIC_POWER_ENTID']
 
   const live = 'TRUE' === env.ENERGY_CHARTS_API__TEST_LIVE
 

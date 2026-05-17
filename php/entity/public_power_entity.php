@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-// EnergyChartsApi2 SDK Power entity
+// EnergyChartsApi2 SDK PublicPower entity
 
 require_once __DIR__ . '/../utility/struct/Struct.php';
 require_once __DIR__ . '/../core/Helpers.php';
 
 use Voxgig\Struct\Struct;
 
-class PowerEntity
+class PublicPowerEntity
 {
     private string $_name;
     private $_client;
@@ -29,7 +29,7 @@ class PowerEntity
             $entopts["active"] = true;
         }
 
-        $this->_name = "power";
+        $this->_name = "public_power";
         $this->_client = $client;
         $this->_utility = $client->get_utility();
         $this->_entopts = $entopts;
@@ -52,7 +52,7 @@ class PowerEntity
     public function make(): self
     {
         $opts = $this->_entopts;
-        return new PowerEntity($this->_client, $opts);
+        return new PublicPowerEntity($this->_client, $opts);
     }
 
     public function data_set($args): void

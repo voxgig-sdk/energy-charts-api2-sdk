@@ -21,11 +21,11 @@ local function make_config()
         ["content-type"] = "application/json",
       },
       entity = {
-        ["power"] = {},
+        ["public_power"] = {},
       },
     },
     entity = {
-      ["power"] = {
+      ["public_power"] = {
         ["fields"] = {
           {
             ["name"] = "data",
@@ -42,7 +42,7 @@ local function make_config()
             ["index$"] = 1,
           },
         },
-        ["name"] = "power",
+        ["name"] = "public_power",
         ["op"] = {
           ["list"] = {
             ["name"] = "list",
@@ -78,9 +78,9 @@ local function make_config()
                   },
                 },
                 ["method"] = "GET",
-                ["orig"] = "/power",
+                ["orig"] = "/public_power",
                 ["parts"] = {
-                  "power",
+                  "public_power",
                 },
                 ["select"] = {
                   ["exist"] = {

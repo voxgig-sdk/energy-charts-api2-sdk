@@ -40,9 +40,9 @@ client := sdk.TestSDK(nil, nil)
 
 ### Instance Methods
 
-#### `Power(data map[string]any) EnergyChartsApi2Entity`
+#### `PublicPower(data map[string]any) EnergyChartsApi2Entity`
 
-Create a new `Power` entity instance. Pass `nil` for no initial data.
+Create a new `PublicPower` entity instance. Pass `nil` for no initial data.
 
 #### `OptionsMap() map[string]any`
 
@@ -80,10 +80,10 @@ same parameters as `Direct()`.
 
 ---
 
-## PowerEntity
+## PublicPowerEntity
 
 ```go
-power := client.Power(nil)
+public_power := client.PublicPower(nil)
 ```
 
 ### Fields
@@ -100,7 +100,7 @@ power := client.Power(nil)
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.Power(nil).List(nil, nil)
+results, err := client.PublicPower(nil).List(nil, nil)
 ```
 
 ### Common Methods
@@ -117,7 +117,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `PowerEntity` instance with the same client and
+Create a new `PublicPowerEntity` instance with the same client and
 options.
 
 #### `GetName() string`

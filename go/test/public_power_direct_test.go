@@ -10,9 +10,9 @@ import (
 	"github.com/voxgig-sdk/energy-charts-api2-sdk/go/core"
 )
 
-func TestPowerDirect(t *testing.T) {
-	t.Run("direct-list-power", func(t *testing.T) {
-		setup := powerDirectSetup([]any{
+func TestPublicPowerDirect(t *testing.T) {
+	t.Run("direct-list-public_power", func(t *testing.T) {
+		setup := public_powerDirectSetup([]any{
 			map[string]any{"id": "direct01"},
 			map[string]any{"id": "direct02"},
 		})
@@ -20,7 +20,7 @@ func TestPowerDirect(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-power", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-public_power", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
@@ -31,7 +31,7 @@ func TestPowerDirect(t *testing.T) {
 
 
 		result, err := client.Direct(map[string]any{
-			"path":   "power",
+			"path":   "public_power",
 			"method": "GET",
 			"params": map[string]any{},
 		})
@@ -78,20 +78,20 @@ func TestPowerDirect(t *testing.T) {
 
 }
 
-type powerDirectSetupResult struct {
+type public_powerDirectSetupResult struct {
 	client *sdk.EnergyChartsApi2SDK
 	calls  *[]map[string]any
 	live   bool
 	idmap  map[string]any
 }
 
-func powerDirectSetup(mockres any) *powerDirectSetupResult {
+func public_powerDirectSetup(mockres any) *public_powerDirectSetupResult {
 	loadEnvLocal()
 
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"ENERGYCHARTSAPI__TEST_POWER_ENTID": map[string]any{},
+		"ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID": map[string]any{},
 		"ENERGYCHARTSAPI__TEST_LIVE":    "FALSE",
 		"ENERGYCHARTSAPI__APIKEY":       "NONE",
 	})
@@ -105,7 +105,7 @@ func powerDirectSetup(mockres any) *powerDirectSetupResult {
 		client := sdk.NewEnergyChartsApi2SDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["ENERGYCHARTSAPI__TEST_POWER_ENTID"]; ok {
+		if entidRaw, ok := env["ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {
@@ -113,7 +113,7 @@ func powerDirectSetup(mockres any) *powerDirectSetupResult {
 			}
 		}
 
-		return &powerDirectSetupResult{client: client, calls: calls, live: true, idmap: idmap}
+		return &public_powerDirectSetupResult{client: client, calls: calls, live: true, idmap: idmap}
 	}
 
 	mockFetch := func(url string, init map[string]any) (map[string]any, error) {
@@ -138,7 +138,7 @@ func powerDirectSetup(mockres any) *powerDirectSetupResult {
 		},
 	})
 
-	return &powerDirectSetupResult{client: client, calls: calls, live: false, idmap: map[string]any{}}
+	return &public_powerDirectSetupResult{client: client, calls: calls, live: false, idmap: map[string]any{}}
 }
 
 var _ = os.Getenv

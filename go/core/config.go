@@ -21,11 +21,11 @@ func MakeConfig() map[string]any {
 				"content-type": "application/json",
 			},
 			"entity": map[string]any{
-				"power": map[string]any{},
+				"public_power": map[string]any{},
 			},
 		},
 		"entity": map[string]any{
-			"power": map[string]any{
+			"public_power": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "data",
@@ -42,7 +42,7 @@ func MakeConfig() map[string]any {
 						"index$": 1,
 					},
 				},
-				"name": "power",
+				"name": "public_power",
 				"op": map[string]any{
 					"list": map[string]any{
 						"name": "list",
@@ -78,9 +78,9 @@ func MakeConfig() map[string]any {
 									},
 								},
 								"method": "GET",
-								"orig": "/power",
+								"orig": "/public_power",
 								"parts": []any{
-									"power",
+									"public_power",
 								},
 								"select": map[string]any{
 									"exist": []any{

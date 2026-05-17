@@ -42,9 +42,9 @@ client = EnergyChartsApi2SDK.test()
 
 ### Instance Methods
 
-#### `Power(data=None)`
+#### `PublicPower(data=None)`
 
-Create a new `PowerEntity` instance. Pass `None` for no initial data.
+Create a new `PublicPowerEntity` instance. Pass `None` for no initial data.
 
 #### `options_map() -> dict`
 
@@ -78,10 +78,10 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 
 ---
 
-## PowerEntity
+## PublicPowerEntity
 
 ```python
-power = client.Power()
+public_power = client.PublicPower()
 ```
 
 ### Fields
@@ -98,7 +98,7 @@ power = client.Power()
 List entities matching the given criteria. Returns an array.
 
 ```python
-results, err = client.Power().list({})
+results, err = client.PublicPower().list({})
 ```
 
 ### Common Methods
@@ -121,7 +121,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `PowerEntity` instance with the same options.
+Create a new `PublicPowerEntity` instance with the same options.
 
 #### `get_name() -> str`
 

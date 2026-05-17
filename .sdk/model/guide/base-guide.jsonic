@@ -5,8 +5,8 @@ guide: {
   metrics: count: path: 1
   metrics: count: method: 1
 
-  entity: power: {
-    path: "/power": {
+  entity: public_power: {
+    path: "/public_power": {
       op: list: method: *GET
     }
   }

@@ -11,7 +11,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Power** |  | `/power` |
+| **PublicPower** |  | `/public_power` |
 
 Each entity supports the following operations where available: **load**, **list**, **create**,
 **update**, and **remove**.
@@ -65,8 +65,8 @@ client := sdk.NewEnergyChartsApi2SDK(map[string]any{
     "apikey": os.Getenv("ENERGY-CHARTS-API2_APIKEY"),
 })
 
-// List all powers
-powers, err := client.Power(nil).List(nil, nil)
+// List all publicpowers
+publicpowers, err := client.PublicPower(nil).List(nil, nil)
 ```
 
 ### Lua
@@ -78,8 +78,8 @@ local client = sdk.new({
   apikey = os.getenv("ENERGY-CHARTS-API2_APIKEY"),
 })
 
--- List all powers
-local powers, err = client:Power(nil):list(nil, nil)
+-- List all publicpowers
+local publicpowers, err = client:PublicPower(nil):list(nil, nil)
 ```
 
 ### PHP
@@ -92,8 +92,8 @@ $client = new EnergyChartsApi2SDK([
     "apikey" => getenv("ENERGY-CHARTS-API2_APIKEY"),
 ]);
 
-// List all powers
-[$powers, $err] = $client->Power(null)->list(null, null);
+// List all publicpowers
+[$publicpowers, $err] = $client->PublicPower(null)->list(null, null);
 ```
 
 ### Python
@@ -106,8 +106,8 @@ client = EnergyChartsApi2SDK({
     "apikey": os.environ.get("ENERGY-CHARTS-API2_APIKEY"),
 })
 
-# List all powers
-powers, err = client.Power(None).list(None, None)
+# List all publicpowers
+publicpowers, err = client.PublicPower(None).list(None, None)
 ```
 
 ### Ruby
@@ -119,8 +119,8 @@ client = EnergyChartsApi2SDK.new({
   "apikey" => ENV["ENERGY-CHARTS-API2_APIKEY"],
 })
 
-# List all powers
-powers, err = client.Power(nil).list(nil, nil)
+# List all publicpowers
+publicpowers, err = client.PublicPower(nil).list(nil, nil)
 ```
 
 ### TypeScript
@@ -132,8 +132,8 @@ const client = new EnergyChartsApi2SDK({
   apikey: process.env.ENERGY-CHARTS-API2_APIKEY,
 })
 
-// List all powers
-const powers = await client.Power().list()
+// List all publicpowers
+const publicpowers = await client.PublicPower().list()
 ```
 
 
@@ -146,7 +146,7 @@ in-memory mock, so tests run without a network connection.
 
 ```go
 client := sdk.TestSDK(nil, nil)
-result, err := client.Power(nil).Load(
+result, err := client.PublicPower(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
 ```
@@ -155,7 +155,7 @@ result, err := client.Power(nil).Load(
 
 ```lua
 local client = sdk.test(nil, nil)
-local result, err = client:Power(nil):load(
+local result, err = client:PublicPower(nil):load(
   { id = "test01" }, nil
 )
 ```
@@ -164,7 +164,7 @@ local result, err = client:Power(nil):load(
 
 ```php
 $client = EnergyChartsApi2SDK::test(null, null);
-[$result, $err] = $client->Power(null)->load(
+[$result, $err] = $client->PublicPower(null)->load(
     ["id" => "test01"], null
 );
 ```
@@ -173,7 +173,7 @@ $client = EnergyChartsApi2SDK::test(null, null);
 
 ```python
 client = EnergyChartsApi2SDK.test(None, None)
-result, err = client.Power(None).load(
+result, err = client.PublicPower(None).load(
     {"id": "test01"}, None
 )
 ```
@@ -182,7 +182,7 @@ result, err = client.Power(None).load(
 
 ```ruby
 client = EnergyChartsApi2SDK.test(nil, nil)
-result, err = client.Power(nil).load(
+result, err = client.PublicPower(nil).load(
   { "id" => "test01" }, nil
 )
 ```
@@ -191,7 +191,7 @@ result, err = client.Power(nil).load(
 
 ```ts
 const client = EnergyChartsApi2SDK.test()
-const result = await client.Power().load({ id: 'test01' })
+const result = await client.PublicPower().load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 

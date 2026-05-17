@@ -49,9 +49,9 @@ const client = EnergyChartsApi2SDK.test()
 
 ### Instance Methods
 
-#### `Power(data?: object)`
+#### `PublicPower(data?: object)`
 
-Create a new `Power` entity instance.
+Create a new `PublicPower` entity instance.
 
 **Parameters:**
 
@@ -59,7 +59,7 @@ Create a new `Power` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `PowerEntity` instance.
+**Returns:** `PublicPowerEntity` instance.
 
 #### `options()`
 
@@ -107,10 +107,10 @@ Alias for `EnergyChartsApi2SDK.test()`.
 
 ---
 
-## PowerEntity
+## PublicPowerEntity
 
 ```ts
-const power = client.Power()
+const public_power = client.PublicPower()
 ```
 
 ### Fields
@@ -127,7 +127,7 @@ const power = client.Power()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Power().list()
+const results = await client.PublicPower().list()
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `PowerEntity` instance with the same client and
+Create a new `PublicPowerEntity` instance with the same client and
 options.
 
 #### `client()`

@@ -16,18 +16,18 @@ import type {
 
 
 // TODO: needs Entity superclass
-class PowerEntity extends EnergyChartsApi2EntityBase {
+class PublicPowerEntity extends EnergyChartsApi2EntityBase {
 
   constructor(client: EnergyChartsApi2SDK, entopts: any) {
     super(client, entopts)
-    this.name = 'power'
-    this.name_ = 'power'
-    this.Name = 'Power'
+    this.name = 'public_power'
+    this.name_ = 'public_power'
+    this.Name = 'PublicPower'
   }
 
 
-  make(this: PowerEntity) {
-    return new PowerEntity(this._client, this.entopts())
+  make(this: PublicPowerEntity) {
+    return new PublicPowerEntity(this._client, this.entopts())
   }
 
 
@@ -146,5 +146,5 @@ class PowerEntity extends EnergyChartsApi2EntityBase {
 
 
 export {
-  PowerEntity
+  PublicPowerEntity
 }

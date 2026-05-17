@@ -213,9 +213,9 @@ class EnergyChartsApi2SDK:
         }, None
 
 
-    def Power(self, data=None):
-        from entity.power_entity import PowerEntity
-        return PowerEntity(self, data)
+    def PublicPower(self, data=None):
+        from entity.public_power_entity import PublicPowerEntity
+        return PublicPowerEntity(self, data)
 
 
 

@@ -245,8 +245,8 @@ func (sdk *EnergyChartsApi2SDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
-func (sdk *EnergyChartsApi2SDK) Power(data map[string]any) EnergyChartsApi2Entity {
-	return NewPowerEntityFunc(sdk, data)
+func (sdk *EnergyChartsApi2SDK) PublicPower(data map[string]any) EnergyChartsApi2Entity {
+	return NewPublicPowerEntityFunc(sdk, data)
 }
 
 

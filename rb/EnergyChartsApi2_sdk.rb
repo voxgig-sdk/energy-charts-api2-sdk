@@ -199,9 +199,9 @@ class EnergyChartsApi2SDK
   end
 
 
-  def Power(data = nil)
-    require_relative 'entity/power_entity'
-    PowerEntity.new(self, data)
+  def PublicPower(data = nil)
+    require_relative 'entity/public_power_entity'
+    PublicPowerEntity.new(self, data)
   end
 
 

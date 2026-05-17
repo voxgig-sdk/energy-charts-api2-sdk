@@ -1,9 +1,9 @@
-# EnergyChartsApi2 SDK Power entity
+# EnergyChartsApi2 SDK PublicPower entity
 
 require_relative '../utility/struct/voxgig_struct'
 require_relative '../core/helpers'
 
-class PowerEntity
+class PublicPowerEntity
   def initialize(client, entopts = nil)
     entopts ||= {}
     if entopts["active"].nil?
@@ -14,7 +14,7 @@ class PowerEntity
       entopts["active"] = true
     end
 
-    @_name = "power"
+    @_name = "public_power"
     @_client = client
     @_utility = client.get_utility
     @_entopts = entopts
@@ -35,7 +35,7 @@ class PowerEntity
 
   def make
     opts = @_entopts.dup
-    PowerEntity.new(@_client, opts)
+    PublicPowerEntity.new(@_client, opts)
   end
 
   def data_set(args)

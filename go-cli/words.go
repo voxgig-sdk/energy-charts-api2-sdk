@@ -86,8 +86,8 @@ func runOp(client *sdk.EnergyChartsApi2SDK, op string, query *eng.Value, entityA
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.EnergyChartsApi2SDK, name string) (sdk.EnergyChartsApi2Entity, error) {
 	switch strings.ToLower(name) {
-	case "power":
-		return client.Power(nil), nil
+	case "public_power":
+		return client.PublicPower(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

@@ -42,9 +42,9 @@ client = EnergyChartsApi2SDK.test
 
 ### Instance Methods
 
-#### `Power(data = nil)`
+#### `PublicPower(data = nil)`
 
-Create a new `Power` entity instance. Pass `nil` for no initial data.
+Create a new `PublicPower` entity instance. Pass `nil` for no initial data.
 
 #### `options_map -> Hash`
 
@@ -82,10 +82,10 @@ same parameters as `direct()`.
 
 ---
 
-## PowerEntity
+## PublicPowerEntity
 
 ```ruby
-power = client.Power
+public_power = client.PublicPower
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ power = client.Power
 List entities matching the given criteria. Returns an array.
 
 ```ruby
-results, err = client.Power.list(nil)
+results, err = client.PublicPower.list(nil)
 ```
 
 ### Common Methods
@@ -125,7 +125,7 @@ Set the entity match criteria.
 
 #### `make -> Entity`
 
-Create a new `PowerEntity` instance with the same client and
+Create a new `PublicPowerEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

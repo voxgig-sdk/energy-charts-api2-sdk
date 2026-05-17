@@ -40,10 +40,10 @@ func main() {
     })
 ```
 
-### 2. List powers
+### 2. List publicpowers
 
 ```go
-    result, err := client.Power(nil).List(nil, nil)
+    result, err := client.PublicPower(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
@@ -186,7 +186,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Power` | `(data map[string]any) EnergyChartsApi2Entity` | Create a Power entity instance. |
+| `PublicPower` | `(data map[string]any) EnergyChartsApi2Entity` | Create a PublicPower entity instance. |
 
 ### Entity interface (EnergyChartsApi2Entity)
 
@@ -220,7 +220,7 @@ On error, `"ok"` is `false` and `"err"` contains the error value.
 
 ### Entities
 
-#### Power
+#### PublicPower
 
 | Field | Description |
 | --- | --- |
@@ -229,16 +229,16 @@ On error, `"ok"` is `false` and `"err"` contains the error value.
 
 Operations: List.
 
-API path: `/power`
+API path: `/public_power`
 
 
 
 ## Entities
 
 
-### Power
+### PublicPower
 
-Create an instance: `power := client.Power(nil)`
+Create an instance: `public_power := client.PublicPower(nil)`
 
 #### Operations
 
@@ -256,7 +256,7 @@ Create an instance: `power := client.Power(nil)`
 #### Example: List
 
 ```go
-results, err := client.Power(nil).List(nil, nil)
+results, err := client.PublicPower(nil).List(nil, nil)
 ```
 
 

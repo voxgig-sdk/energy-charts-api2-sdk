@@ -1,17 +1,17 @@
-# Power direct test
+# PublicPower direct test
 
 require "minitest/autorun"
 require "json"
 require_relative "../EnergyChartsApi2_sdk"
 require_relative "runner"
 
-class PowerDirectTest < Minitest::Test
-  def test_direct_list_power
-    setup = power_direct_setup([
+class PublicPowerDirectTest < Minitest::Test
+  def test_direct_list_public_power
+    setup = public_power_direct_setup([
       { "id" => "direct01" },
       { "id" => "direct02" },
     ])
-    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-power", setup[:live] ? "live" : "unit")
+    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-public_power", setup[:live] ? "live" : "unit")
     if _should_skip
       skip(_reason || "skipped via sdk-test-control.json")
       return
@@ -20,7 +20,7 @@ class PowerDirectTest < Minitest::Test
 
 
     result, err = client.direct({
-      "path" => "power",
+      "path" => "public_power",
       "method" => "GET",
       "params" => {},
     })
@@ -54,13 +54,13 @@ class PowerDirectTest < Minitest::Test
 end
 
 
-def power_direct_setup(mockres)
+def public_power_direct_setup(mockres)
   Runner.load_env_local
 
   calls = []
 
   env = Runner.env_override({
-    "ENERGYCHARTSAPI__TEST_POWER_ENTID" => {},
+    "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID" => {},
     "ENERGYCHARTSAPI__TEST_LIVE" => "FALSE",
     "ENERGYCHARTSAPI__APIKEY" => "NONE",
   })

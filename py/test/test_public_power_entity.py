@@ -1,4 +1,4 @@
-# Power entity test
+# PublicPower entity test
 
 import json
 import os
@@ -14,21 +14,21 @@ _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
 
 
-class TestPowerEntity:
+class TestPublicPowerEntity:
 
     def test_should_create_instance(self):
         testsdk = EnergyChartsApi2SDK.test(None, None)
-        ent = testsdk.Power(None)
+        ent = testsdk.PublicPower(None)
         assert ent is not None
 
     def test_should_run_basic_flow(self):
-        setup = _power_basic_setup(None)
+        setup = _public_power_basic_setup(None)
         # Per-op sdk-test-control.json skip — basic test exercises a flow with
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
         for _op in ["list"]:
-            _skip, _reason = runner.is_control_skipped("entityOp", "power." + _op, "live" if _live else "unit")
+            _skip, _reason = runner.is_control_skipped("entityOp", "public_power." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
@@ -36,30 +36,30 @@ class TestPowerEntity:
         # without an *_ENTID env override, those IDs hit the live API and 4xx.
         if setup.get("synthetic_only"):
             pytest.skip("live entity test uses synthetic IDs from fixture — "
-                        "set ENERGYCHARTSAPI__TEST_POWER_ENTID JSON to run live")
+                        "set ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID JSON to run live")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
-        power_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.power")))
-        power_ref01_data = None
-        if len(power_ref01_data_raw) > 0:
-            power_ref01_data = helpers.to_map(power_ref01_data_raw[0][1])
+        public_power_ref01_data_raw = vs.items(helpers.to_map(
+            vs.getpath(setup["data"], "existing.public_power")))
+        public_power_ref01_data = None
+        if len(public_power_ref01_data_raw) > 0:
+            public_power_ref01_data = helpers.to_map(public_power_ref01_data_raw[0][1])
 
         # LIST
-        power_ref01_ent = client.Power(None)
-        power_ref01_match = {}
+        public_power_ref01_ent = client.PublicPower(None)
+        public_power_ref01_match = {}
 
-        power_ref01_list_result, err = power_ref01_ent.list(power_ref01_match, None)
+        public_power_ref01_list_result, err = public_power_ref01_ent.list(public_power_ref01_match, None)
         assert err is None
-        assert isinstance(power_ref01_list_result, list)
+        assert isinstance(public_power_ref01_list_result, list)
 
 
 
-def _power_basic_setup(extra):
+def _public_power_basic_setup(extra):
     runner.load_env_local()
 
-    entity_data_file = os.path.join(_TEST_DIR, "../../.sdk/test/entity/power/PowerTestData.json")
+    entity_data_file = os.path.join(_TEST_DIR, "../../.sdk/test/entity/public_power/PublicPowerTestData.json")
     with open(entity_data_file, "r") as f:
         entity_data_source = f.read()
 
@@ -72,7 +72,7 @@ def _power_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["power01", "power02", "power03"],
+        ["public_power01", "public_power02", "public_power03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -85,18 +85,18 @@ def _power_basic_setup(extra):
     # mode is on without a real override, the basic test runs against synthetic
     # IDs from the fixture and 4xx's. We surface this so the test can skip.
     _entid_env_raw = os.environ.get(
-        "ENERGYCHARTSAPI__TEST_POWER_ENTID")
+        "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID")
     _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
 
     env = runner.env_override({
-        "ENERGYCHARTSAPI__TEST_POWER_ENTID": idmap,
+        "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID": idmap,
         "ENERGYCHARTSAPI__TEST_LIVE": "FALSE",
         "ENERGYCHARTSAPI__TEST_EXPLAIN": "FALSE",
         "ENERGYCHARTSAPI__APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
-        env.get("ENERGYCHARTSAPI__TEST_POWER_ENTID"))
+        env.get("ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
 

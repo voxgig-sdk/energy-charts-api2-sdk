@@ -22,10 +22,10 @@ const client = new EnergyChartsApi2SDK({
 })
 ```
 
-### 2. List powers
+### 2. List publicpowers
 
 ```ts
-const result = await client.Power().list()
+const result = await client.PublicPower().list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -175,7 +175,7 @@ new EnergyChartsApi2SDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `Power(data?)` | `PowerEntity` | Create a Power entity instance. |
+| `PublicPower(data?)` | `PublicPowerEntity` | Create a PublicPower entity instance. |
 | `tester(testopts?, sdkopts?)` | `EnergyChartsApi2SDK` | Create a test-mode client instance. |
 
 #### Static methods
@@ -246,7 +246,7 @@ The `prepare()` method returns:
 
 ### Entities
 
-#### Power
+#### PublicPower
 
 | Field | Description |
 | --- | --- |
@@ -255,16 +255,16 @@ The `prepare()` method returns:
 
 Operations: list.
 
-API path: `/power`
+API path: `/public_power`
 
 
 
 ## Entities
 
 
-### Power
+### PublicPower
 
-Create an instance: `const power = client.Power()`
+Create an instance: `const public_power = client.PublicPower()`
 
 #### Operations
 
@@ -282,7 +282,7 @@ Create an instance: `const power = client.Power()`
 #### Example: List
 
 ```ts
-const powers = await client.Power().list()
+const public_powers = await client.PublicPower().list()
 ```
 
 

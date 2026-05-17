@@ -1,6 +1,6 @@
 // EnergyChartsApi2 Ts SDK
 
-import { PowerEntity } from './entity/PowerEntity'
+import { PublicPowerEntity } from './entity/PublicPowerEntity'
 
 
 import { inspect } from 'node:util'
@@ -202,9 +202,9 @@ class EnergyChartsApi2SDK {
 
 
 
-  Power(data?: any) {
+  PublicPower(data?: any) {
     const self = this
-    return new PowerEntity(self,data)
+    return new PublicPowerEntity(self,data)
   }
 
 
