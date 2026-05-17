@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/energy-charts-api2-sdk/go/utility/struct"
 )
 
 type EnergyChartsApi2SDK struct {
