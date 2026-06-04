@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID': {},
     'ENERGYCHARTSAPI__TEST_LIVE': 'FALSE',
-    'ENERGYCHARTSAPI__APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ENERGYCHARTSAPI__TEST_LIVE
 
   if (live) {
     const client = new EnergyChartsApi2SDK({
-      apikey: env.ENERGYCHARTSAPI__APIKEY,
     })
 
     let idmap: any = env['ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID']

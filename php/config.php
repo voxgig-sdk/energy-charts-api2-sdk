@@ -20,9 +20,6 @@ class EnergyChartsApi2Config
             ],
             "options" => [
                 "base" => "https://api.energy-charts.info",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

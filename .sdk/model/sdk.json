@@ -16,7 +16,17 @@
           }
         ],
         "title": "Energy-Charts API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Open electricity generation, price, and renewable-share data for Germany and other European countries",
+        "homepage": "https://energy-charts.info/",
+        "docs_url": "https://api.energy-charts.info/",
+        "license_short": "CC BY 4.0 — free to use with attribution to Fraunhofer ISE",
+        "license_md": "- Data and API are published under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) licence.\n- You may share and adapt the data for any purpose, including commercial use.\n- Attribution to [Fraunhofer ISE / Energy-Charts](https://energy-charts.info/) is required.\n- Upstream data sources (e.g. ENTSO-E, national TSOs) may carry their own terms; check before redistribution.",
+        "about_md": "The [Energy-Charts API](https://api.energy-charts.info/) is the public data backend for [energy-charts.info](https://energy-charts.info/), a project run by the [Fraunhofer Institute for Solar Energy Systems ISE](https://www.ise.fraunhofer.de/) in Freiburg, Germany. It exposes the same electricity-market and generation time series that power the Energy-Charts web visualisations, with a focus on the German grid and broader European context.\n\nWhat you can query:\n\n- Public net electricity production broken down by generation type (solar, wind onshore/offshore, nuclear, gas, coal, biomass, hydro, etc.) per country.\n- Generation forecasts and total/installed capacity figures.\n- Day-ahead wholesale electricity prices and cross-border physical flows.\n- Grid frequency and renewable-share signals, plus daily renewable / solar / wind share averages.\n\nThis SDK wraps the `/public_power` endpoint, which returns unix-timestamped arrays of MW values keyed by production type. Most endpoints accept a `country` code (default `de`) and optional `start` / `end` ISO timestamps. The API is open and does not require an API key; please cite Fraunhofer ISE when republishing.",
+        "entity_desc": {
+          "public_power": "Public net electricity production by generation type for a given country and time range, served from `GET /public_power` with `country`, `start`, and `end` query parameters."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +34,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "public_power": {

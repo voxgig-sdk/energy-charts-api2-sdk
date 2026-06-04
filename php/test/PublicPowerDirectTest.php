@@ -68,14 +68,12 @@ function public_power_direct_setup($mockres)
     $env = Runner::env_override([
         "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID" => [],
         "ENERGYCHARTSAPI__TEST_LIVE" => "FALSE",
-        "ENERGYCHARTSAPI__APIKEY" => "NONE",
     ]);
 
     $live = $env["ENERGYCHARTSAPI__TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["ENERGYCHARTSAPI__APIKEY"],
         ];
         $client = new EnergyChartsApi2SDK($merged_opts);
         return [
