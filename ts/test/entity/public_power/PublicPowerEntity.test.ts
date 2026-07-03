@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'ENERGY_CHARTS_API__TEST_PUBLIC_POWER_ENTID': idmap,
     'ENERGY_CHARTS_API__TEST_LIVE': 'FALSE',
     'ENERGY_CHARTS_API__TEST_EXPLAIN': 'FALSE',
+    'ENERGY_CHARTS_API__APIKEY': 'NONE',
   })
 
   idmap = env['ENERGY_CHARTS_API__TEST_PUBLIC_POWER_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new EnergyChartsApi2SDK(merge([
       {
+        apikey: env.ENERGY_CHARTS_API__APIKEY,
       },
       extra
     ]))

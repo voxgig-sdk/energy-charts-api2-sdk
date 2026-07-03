@@ -92,6 +92,7 @@ def _public_power_basic_setup(extra):
         "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID": idmap,
         "ENERGYCHARTSAPI__TEST_LIVE": "FALSE",
         "ENERGYCHARTSAPI__TEST_EXPLAIN": "FALSE",
+        "ENERGYCHARTSAPI__APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ def _public_power_basic_setup(extra):
     if env.get("ENERGYCHARTSAPI__TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("ENERGYCHARTSAPI__APIKEY"),
             },
             extra or {},
         ])

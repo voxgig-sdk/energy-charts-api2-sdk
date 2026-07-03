@@ -1,21 +1,8 @@
 # EnergyChartsApi2 SDK
 
-Open electricity generation, price, and renewable-share data for Germany and other European countries
+Energy-Charts API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Energy-Charts API
-
-The [Energy-Charts API](https://api.energy-charts.info/) is the public data backend for [energy-charts.info](https://energy-charts.info/), a project run by the [Fraunhofer Institute for Solar Energy Systems ISE](https://www.ise.fraunhofer.de/) in Freiburg, Germany. It exposes the same electricity-market and generation time series that power the Energy-Charts web visualisations, with a focus on the German grid and broader European context.
-
-What you can query:
-
-- Public net electricity production broken down by generation type (solar, wind onshore/offshore, nuclear, gas, coal, biomass, hydro, etc.) per country.
-- Generation forecasts and total/installed capacity figures.
-- Day-ahead wholesale electricity prices and cross-border physical flows.
-- Grid frequency and renewable-share signals, plus daily renewable / solar / wind share averages.
-
-This SDK wraps the `/public_power` endpoint, which returns unix-timestamped arrays of MW values keyed by production type. Most endpoints accept a `country` code (default `de`) and optional `start` / `end` ISO timestamps. The API is open and does not require an API key; please cite Fraunhofer ISE when republishing.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install energy-charts-api2-sdk
 luarocks install energy-charts-api2-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { EnergyChartsApi2SDK } from 'energy-charts-api2'
 
-const client = new EnergyChartsApi2SDK({})
+const client = new EnergyChartsApi2SDK({
+  apikey: process.env.ENERGY-CHARTS-API2_APIKEY,
+})
 
 // List all publicpowers
 const publicpowers = await client.PublicPower().list()
+console.log(publicpowers.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **PublicPower** | Public net electricity production by generation type for a given country and time range, served from `GET /public_power` with `country`, `start`, and `end` query parameters. | `/public_power` |
+| **PublicPower** |  | `/public_power` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,12 +100,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from energychartsapi2_sdk import EnergyChartsApi2SDK
 
-client = EnergyChartsApi2SDK({})
+client = EnergyChartsApi2SDK({
+    "apikey": os.environ.get("ENERGY-CHARTS-API2_APIKEY"),
+})
 
 # List all publicpowers
-publicpowers, err = client.PublicPower(None).list(None, None)
+publicpowers, err = client.PublicPower().list()
+print(publicpowers)
 ```
 
 ### PHP
@@ -125,10 +118,13 @@ publicpowers, err = client.PublicPower(None).list(None, None)
 <?php
 require_once 'energychartsapi2_sdk.php';
 
-$client = new EnergyChartsApi2SDK([]);
+$client = new EnergyChartsApi2SDK([
+    "apikey" => getenv("ENERGY-CHARTS-API2_APIKEY"),
+]);
 
 // List all publicpowers
-[$publicpowers, $err] = $client->PublicPower(null)->list(null, null);
+[$publicpowers, $err] = $client->PublicPower()->list();
+print_r($publicpowers);
 ```
 
 ### Golang
@@ -136,10 +132,13 @@ $client = new EnergyChartsApi2SDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/energy-charts-api2-sdk/go"
 
-client := sdk.NewEnergyChartsApi2SDK(map[string]any{})
+client := sdk.NewEnergyChartsApi2SDK(map[string]any{
+    "apikey": os.Getenv("ENERGY-CHARTS-API2_APIKEY"),
+})
 
 // List all publicpowers
 publicpowers, err := client.PublicPower(nil).List(nil, nil)
+fmt.Println(publicpowers)
 ```
 
 ### Ruby
@@ -147,10 +146,13 @@ publicpowers, err := client.PublicPower(nil).List(nil, nil)
 ```ruby
 require_relative "EnergyChartsApi2_sdk"
 
-client = EnergyChartsApi2SDK.new({})
+client = EnergyChartsApi2SDK.new({
+  "apikey" => ENV["ENERGY-CHARTS-API2_APIKEY"],
+})
 
 # List all publicpowers
-publicpowers, err = client.PublicPower(nil).list(nil, nil)
+publicpowers, err = client.PublicPower().list
+puts publicpowers
 ```
 
 ### Lua
@@ -158,10 +160,13 @@ publicpowers, err = client.PublicPower(nil).list(nil, nil)
 ```lua
 local sdk = require("energy-charts-api2_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ENERGY-CHARTS-API2_APIKEY"),
+})
 
 -- List all publicpowers
-local publicpowers, err = client:PublicPower(nil):list(nil, nil)
+local publicpowers, err = client:PublicPower():list()
+print(publicpowers)
 ```
 
 ## Unit testing in offline mode
@@ -180,25 +185,21 @@ const result = await client.PublicPower().load({ id: 'test01' })
 ### Python
 
 ```python
-client = EnergyChartsApi2SDK.test(None, None)
-result, err = client.PublicPower(None).load(
-    {"id": "test01"}, None
-)
+client = EnergyChartsApi2SDK.test()
+result, err = client.PublicPower().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = EnergyChartsApi2SDK::test(null, null);
-[$result, $err] = $client->PublicPower(null)->load(
-    ["id" => "test01"], null
-);
+$client = EnergyChartsApi2SDK::test();
+[$result, $err] = $client->PublicPower()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.PublicPower(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -207,19 +208,15 @@ result, err := client.PublicPower(nil).Load(
 ### Ruby
 
 ```ruby
-client = EnergyChartsApi2SDK.test(nil, nil)
-result, err = client.PublicPower(nil).load(
-  { "id" => "test01" }, nil
-)
+client = EnergyChartsApi2SDK.test
+result, err = client.PublicPower().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:PublicPower(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:PublicPower():load({ id = "test01" })
 ```
 
 ## How it works
@@ -323,16 +320,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Energy-Charts API
-
-- Upstream: [https://energy-charts.info/](https://energy-charts.info/)
-- API docs: [https://api.energy-charts.info/](https://api.energy-charts.info/)
-
-- Data and API are published under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) licence.
-- You may share and adapt the data for any purpose, including commercial use.
-- Attribution to [Fraunhofer ISE / Energy-Charts](https://energy-charts.info/) is required.
-- Upstream data sources (e.g. ENTSO-E, national TSOs) may carry their own terms; check before redistribution.
 
 ---
 

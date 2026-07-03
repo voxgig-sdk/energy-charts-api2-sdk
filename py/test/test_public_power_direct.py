@@ -61,12 +61,14 @@ def _public_power_direct_setup(mockres):
     env = runner.env_override({
         "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID": {},
         "ENERGYCHARTSAPI__TEST_LIVE": "FALSE",
+        "ENERGYCHARTSAPI__APIKEY": "NONE",
     })
 
     live = env.get("ENERGYCHARTSAPI__TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("ENERGYCHARTSAPI__APIKEY"),
         }
         client = EnergyChartsApi2SDK(merged_opts)
         return {
