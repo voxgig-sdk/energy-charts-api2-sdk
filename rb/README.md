@@ -10,13 +10,13 @@ The Ruby SDK for the EnergyChartsApi2 API — an entity-oriented client using id
 
 ## Install
 ```bash
-gem install energy-charts-api2-sdk
+gem install voxgig-sdk-energy-charts-api2
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "energy-charts-api2-sdk"
+gem "voxgig-sdk-energy-charts-api2"
 ```
 
 Then run:

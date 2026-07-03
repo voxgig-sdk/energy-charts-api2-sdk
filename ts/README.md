@@ -10,7 +10,7 @@ The TypeScript SDK for the EnergyChartsApi2 API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install energy-charts-api2
+npm install @voxgig-sdk/energy-charts-api2
 ```
 ## Tutorial: your first API call
 

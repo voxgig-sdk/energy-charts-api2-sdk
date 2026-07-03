@@ -10,7 +10,7 @@ The Lua SDK for the EnergyChartsApi2 API — an entity-oriented client using Lua
 
 ## Install
 ```bash
-luarocks install energy-charts-api2-sdk
+luarocks install voxgig-sdk-energy-charts-api2
 ```
 
 If the module is not yet published, add the source directory to

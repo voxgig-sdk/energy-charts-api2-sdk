@@ -10,7 +10,7 @@ The PHP SDK for the EnergyChartsApi2 API — an entity-oriented client using PHP
 
 ## Install
 ```bash
-composer require voxgig/energy-charts-api2-sdk
+composer require voxgig-sdk/energy-charts-api2
 ```
 
 
