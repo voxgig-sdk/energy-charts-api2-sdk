@@ -93,14 +93,12 @@ func public_powerDirectSetup(mockres any) *public_powerDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID": map[string]any{},
 		"ENERGYCHARTSAPI__TEST_LIVE":    "FALSE",
-		"ENERGYCHARTSAPI__APIKEY":       "NONE",
 	})
 
 	live := env["ENERGYCHARTSAPI__TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ENERGYCHARTSAPI__APIKEY"],
 		}
 		client := sdk.NewEnergyChartsApi2SDK(mergedOpts)
 

@@ -245,6 +245,9 @@ func (sdk *EnergyChartsApi2SDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// PublicPower returns a PublicPower entity bound to this client.
+// Idiomatic usage: client.PublicPower(nil).List(nil, nil) or
+// client.PublicPower(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EnergyChartsApi2SDK) PublicPower(data map[string]any) EnergyChartsApi2Entity {
 	return NewPublicPowerEntityFunc(sdk, data)
 }

@@ -2,6 +2,8 @@
 
 import { PublicPowerEntity } from './entity/PublicPowerEntity'
 
+export type * from './EnergyChartsApi2Types'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class EnergyChartsApi2SDK {
 
 
 
+  _public_power?: PublicPowerEntity
+
+  // Idiomatic facade: `client.public_power.list()` / `client.public_power.load({ id })`.
+  get public_power(): PublicPowerEntity {
+    return (this._public_power ??= new PublicPowerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.public_power` instead. */
   PublicPower(data?: any) {
     const self = this
     return new PublicPowerEntity(self,data)

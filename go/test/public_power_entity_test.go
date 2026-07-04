@@ -119,7 +119,6 @@ func public_powerBasicSetup(extra map[string]any) *entityTestSetup {
 		"ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID": idmap,
 		"ENERGYCHARTSAPI__TEST_LIVE":      "FALSE",
 		"ENERGYCHARTSAPI__TEST_EXPLAIN":   "FALSE",
-		"ENERGYCHARTSAPI__APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID"])
@@ -130,7 +129,6 @@ func public_powerBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ENERGYCHARTSAPI__TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["ENERGYCHARTSAPI__APIKEY"],
 			},
 			extra,
 		})

@@ -43,8 +43,7 @@ class PublicPowerEntityTest < Minitest::Test
     public_power_ref01_ent = client.PublicPower(nil)
     public_power_ref01_match = {}
 
-    public_power_ref01_list_result, err = public_power_ref01_ent.list(public_power_ref01_match, nil)
-    assert_nil err
+    public_power_ref01_list_result = public_power_ref01_ent.list(public_power_ref01_match, nil)
     assert public_power_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def public_power_basic_setup(extra)
     "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID" => idmap,
     "ENERGYCHARTSAPI__TEST_LIVE" => "FALSE",
     "ENERGYCHARTSAPI__TEST_EXPLAIN" => "FALSE",
-    "ENERGYCHARTSAPI__APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def public_power_basic_setup(extra)
   if env["ENERGYCHARTSAPI__TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ENERGYCHARTSAPI__APIKEY"],
       },
       extra || {},
     ])

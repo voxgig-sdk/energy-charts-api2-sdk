@@ -45,6 +45,7 @@ class PublicPowerEntity
     end
   end
 
+  # @return [PublicPower, Hash] the current PublicPower data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class PublicPowerEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of PublicPower fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class PublicPowerEntity
   
 
   
+  # List PublicPower items matching the given filter.
+  #
+  # @param reqmatch [PublicPowerListMatch, Hash, nil] match filter (any subset of PublicPower fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<PublicPower>, Array] the matching PublicPower items; raises EnergyChartsApi2Error on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `EnergyChartsApi2SDK.test()`.
 ## PublicPowerEntity
 
 ```ts
-const public_power = client.PublicPower()
+const public_power = client.public_power
 ```
 
 ### Fields
@@ -127,7 +126,7 @@ const public_power = client.PublicPower()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.PublicPower().list()
+const results = await client.public_power.list()
 ```
 
 ### Common Methods

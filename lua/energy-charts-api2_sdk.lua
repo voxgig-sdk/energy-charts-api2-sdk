@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:public_power():list() / client:public_power():load({ id = ... })
+function EnergyChartsApi2SDK:public_power(data)
+  local EntityMod = require("entity.public_power_entity")
+  if data == nil then
+    if self._public_power == nil then
+      self._public_power = EntityMod.new(self, nil)
+    end
+    return self._public_power
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:public_power() instead.
 function EnergyChartsApi2SDK:PublicPower(data)
   local EntityMod = require("entity.public_power_entity")
   return EntityMod.new(self, data)
