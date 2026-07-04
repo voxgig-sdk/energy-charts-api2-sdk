@@ -29,18 +29,16 @@ require_once 'energychartsapi2_sdk.php';
 $client = new EnergyChartsApi2SDK();
 ```
 
-### 2. List publicpowers
+### 2. List publicpower records
 
 ```php
 try {
-    $result = $client->publicpower()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of PublicPower records — iterate directly.
+    $publicpowers = $client->PublicPower()->list();
+    foreach ($publicpowers as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = EnergyChartsApi2SDK::test();
+$client = EnergyChartsApi2SDK::test([
+    "entity" => ["publicpower" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->publicpower()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$publicpower = $client->PublicPower()->load(["id" => "test01"]);
+print_r($publicpower);
 ```
 
 ### Use a custom fetch function
@@ -229,7 +231,7 @@ API path: `/public_power`
 
 ### PublicPower
 
-Create an instance: `const public_power = client.public_power`
+Create an instance: `$public_power = $client->PublicPower();`
 
 #### Operations
 
@@ -246,8 +248,9 @@ Create an instance: `const public_power = client.public_power`
 
 #### Example: List
 
-```ts
-const public_powers = await client.public_power.list()
+```php
+// list() returns an array of PublicPower records (throws on error).
+$public_powers = $client->PublicPower()->list();
 ```
 
 
@@ -322,7 +325,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$publicpower = $client->publicpower();
+$publicpower = $client->PublicPower();
 $publicpower->load(["id" => "example_id"]);
 
 // $publicpower->dataGet() now returns the loaded publicpower data

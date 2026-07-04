@@ -109,7 +109,7 @@ Alias for `EnergyChartsApi2SDK.test()`.
 ## PublicPowerEntity
 
 ```ts
-const public_power = client.public_power
+const public_power = client.PublicPower()
 ```
 
 ### Fields
@@ -126,7 +126,7 @@ const public_power = client.public_power
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.public_power.list()
+const results = await client.PublicPower().list()
 ```
 
 ### Common Methods

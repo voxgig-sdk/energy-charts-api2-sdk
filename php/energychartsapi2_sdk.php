@@ -233,10 +233,10 @@ class EnergyChartsApi2SDK
 
     private $_public_power = null;
 
-    // Idiomatic facade: $client->public_power()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias PublicPower() (PHP method
-    // names are case-insensitive).
-    public function public_power($data = null)
+    // Canonical facade: $client->PublicPower()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->public_power()
+    // resolves here too.
+    public function PublicPower($data = null)
     {
         require_once __DIR__ . '/entity/public_power_entity.php';
         if ($data === null) {

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:public_power():list() / client:public_power():load({ id = ... })
-function EnergyChartsApi2SDK:public_power(data)
+-- Idiomatic facade: client:PublicPower():list() / client:PublicPower():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EnergyChartsApi2SDK:PublicPower(data)
   local EntityMod = require("entity.public_power_entity")
   if data == nil then
     if self._public_power == nil then
@@ -253,12 +254,6 @@ function EnergyChartsApi2SDK:public_power(data)
     end
     return self._public_power
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:public_power() instead.
-function EnergyChartsApi2SDK:PublicPower(data)
-  local EntityMod = require("entity.public_power_entity")
   return EntityMod.new(self, data)
 end
 

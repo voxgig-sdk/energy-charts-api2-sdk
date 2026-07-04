@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## PublicPowerEntity
 
 ```ruby
-public_power = client.public_power
+public_power = client.PublicPower
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ public_power = client.public_power
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.public_power.list(nil)
+results = client.PublicPower.list(nil)
 ```
 
 ### Common Methods

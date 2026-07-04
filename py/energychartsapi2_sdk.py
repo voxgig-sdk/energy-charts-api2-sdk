@@ -220,25 +220,15 @@ class EnergyChartsApi2SDK:
         }
 
 
-    @property
-    def public_power(self):
-        """Idiomatic facade: client.public_power.list() / client.public_power.load({"id": ...})."""
-        from entity.public_power_entity import PublicPowerEntity
-        cached = getattr(self, "_public_power", None)
-        if cached is None:
-            cached = PublicPowerEntity(self, None)
-            self._public_power = cached
-        return cached
-
-    def PublicPower(self, data=None):
-        # Deprecated: use client.public_power instead.
+    def PublicPower(self, data=None) -> "PublicPowerEntity":
+        """Entity factory: client.PublicPower().list({}) / client.PublicPower().load({"id": ...})."""
         from entity.public_power_entity import PublicPowerEntity
         return PublicPowerEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "EnergyChartsApi2SDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class EnergyChartsApi2SDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.public_power_entity import PublicPowerEntity

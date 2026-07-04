@@ -204,14 +204,7 @@ class EnergyChartsApi2SDK {
 
 
 
-  _public_power?: PublicPowerEntity
-
-  // Idiomatic facade: `client.public_power.list()` / `client.public_power.load({ id })`.
-  get public_power(): PublicPowerEntity {
-    return (this._public_power ??= new PublicPowerEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.public_power` instead. */
+  // Entity access: `client.PublicPower().list()` / `client.PublicPower().load({ id })`.
   PublicPower(data?: any) {
     const self = this
     return new PublicPowerEntity(self,data)

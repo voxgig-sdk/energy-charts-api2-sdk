@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## PublicPowerEntity
 
 ```lua
-local public_power = client:public_power(nil)
+local public_power = client:PublicPower(nil)
 ```
 
 ### Fields
@@ -100,7 +100,7 @@ local public_power = client:public_power(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:public_power():list()
+local results, err = client:PublicPower():list()
 ```
 
 ### Common Methods

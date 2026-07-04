@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## PublicPowerEntity
 
 ```php
-$public_power = $client->public_power();
+$public_power = $client->PublicPower();
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ $public_power = $client->public_power();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->public_power()->list([]);
+$results = $client->PublicPower()->list([]);
 ```
 
 ### Common Methods

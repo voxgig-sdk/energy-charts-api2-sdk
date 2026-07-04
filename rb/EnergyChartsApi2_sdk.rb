@@ -208,13 +208,7 @@ class EnergyChartsApi2SDK
   end
 
 
-  # Idiomatic facade: client.public_power.list / client.public_power.load({ "id" => ... })
-  def public_power
-    require_relative 'entity/public_power_entity'
-    @public_power ||= PublicPowerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.public_power instead.
+  # Canonical facade: client.PublicPower.list / client.PublicPower.load({ "id" => ... })
   def PublicPower(data = nil)
     require_relative 'entity/public_power_entity'
     PublicPowerEntity.new(self, data)

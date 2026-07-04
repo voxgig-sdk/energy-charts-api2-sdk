@@ -28,16 +28,14 @@ require_relative "EnergyChartsApi2_sdk"
 client = EnergyChartsApi2SDK.new
 ```
 
-### 2. List publicpowers
+### 2. List publicpower records
 
 ```ruby
 begin
-  result = client.publicpower.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of PublicPower records — iterate directly.
+  publicpowers = client.PublicPower.list
+  publicpowers.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = EnergyChartsApi2SDK.test
+client = EnergyChartsApi2SDK.test({
+  "entity" => { "publicpower" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.publicpower.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+publicpower = client.PublicPower.load({ "id" => "test01" })
+puts publicpower
 ```
 
 ### Use a custom fetch function
@@ -224,7 +226,7 @@ API path: `/public_power`
 
 ### PublicPower
 
-Create an instance: `const public_power = client.public_power`
+Create an instance: `public_power = client.PublicPower`
 
 #### Operations
 
@@ -241,8 +243,9 @@ Create an instance: `const public_power = client.public_power`
 
 #### Example: List
 
-```ts
-const public_powers = await client.public_power.list()
+```ruby
+# list returns an Array of PublicPower records (raises on error).
+public_powers = client.PublicPower.list
 ```
 
 
@@ -317,7 +320,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-publicpower = client.publicpower
+publicpower = client.PublicPower
 publicpower.load({ "id" => "example_id" })
 
 # publicpower.data_get now returns the loaded publicpower data

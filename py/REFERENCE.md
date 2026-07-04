@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## PublicPowerEntity
 
 ```python
-public_power = client.public_power
+public_power = client.PublicPower()
 ```
 
 ### Fields
@@ -97,7 +97,9 @@ public_power = client.public_power
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.public_power.list({})
+results = client.PublicPower().list({})
+for public_power in results:
+    print(public_power)
 ```
 
 ### Common Methods

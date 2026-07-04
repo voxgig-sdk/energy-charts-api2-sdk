@@ -26,9 +26,11 @@ import { EnergyChartsApi2SDK } from '@voxgig-sdk/energy-charts-api2'
 
 const client = new EnergyChartsApi2SDK()
 
-// List all publicpowers
-const publicpowers = await client.publicpower.list()
-console.log(publicpowers.data)
+// List all publicpowers (returns PublicPower[])
+const publicpowers = await client.PublicPower().list()
+for (const publicpower of publicpowers) {
+  console.log(publicpower)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -83,9 +85,10 @@ from energychartsapi2_sdk import EnergyChartsApi2SDK
 
 client = EnergyChartsApi2SDK()
 
-# List all publicpowers
-publicpowers = client.publicpower.list()
-print(publicpowers)
+# List all publicpowers (returns a list, raises on error)
+publicpowers = client.PublicPower().list({})
+for publicpower in publicpowers:
+    print(publicpower)
 ```
 
 ### PHP
@@ -96,8 +99,8 @@ require_once 'energychartsapi2_sdk.php';
 
 $client = new EnergyChartsApi2SDK();
 
-// List all publicpowers (throws on error)
-$publicpowers = $client->publicpower()->list();
+// List all publicpowers (returns an array; throws on error)
+$publicpowers = $client->PublicPower()->list();
 print_r($publicpowers);
 ```
 
@@ -120,8 +123,8 @@ require_relative "EnergyChartsApi2_sdk"
 
 client = EnergyChartsApi2SDK.new
 
-# List all publicpowers
-publicpowers = client.publicpower.list
+# List all publicpowers (returns an Array; raises on error)
+publicpowers = client.PublicPower.list
 puts publicpowers
 ```
 
@@ -133,7 +136,7 @@ local sdk = require("energy-charts-api2_sdk")
 local client = sdk.new()
 
 -- List all publicpowers
-local publicpowers, err = client:publicpower():list()
+local publicpowers, err = client:PublicPower():list()
 print(publicpowers)
 ```
 
@@ -146,22 +149,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = EnergyChartsApi2SDK.test()
-const result = await client.publicpower.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const publicpower = await client.PublicPower().load({ id: 'test01' })
+// publicpower is a bare PublicPower populated with mock data
+console.log(publicpower)
 ```
 
 ### Python
 
 ```python
 client = EnergyChartsApi2SDK.test()
-result = client.publicpower.load({"id": "test01"})
+publicpower = client.PublicPower().load({"id": "test01"})
+print(publicpower)
 ```
 
 ### PHP
 
 ```php
-$client = EnergyChartsApi2SDK::test();
-$result = $client->publicpower()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = EnergyChartsApi2SDK::test([
+    "entity" => ["publicpower" => ["test01" => ["id" => "test01"]]],
+]);
+$publicpower = $client->PublicPower()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -176,15 +184,18 @@ result, err := client.PublicPower(nil).Load(
 ### Ruby
 
 ```ruby
-client = EnergyChartsApi2SDK.test
-result = client.publicpower.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = EnergyChartsApi2SDK.test({
+  "entity" => { "publicpower" => { "test01" => { "id" => "test01" } } },
+})
+publicpower = client.PublicPower.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:publicpower():load({ id = "test01" })
+local result, err = client:PublicPower():load({ id = "test01" })
 ```
 
 ## How it works
@@ -232,6 +243,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -31,14 +31,16 @@ from energychartsapi2_sdk import EnergyChartsApi2SDK
 client = EnergyChartsApi2SDK()
 ```
 
-### 2. List publicpowers
+### 2. List publicpower records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.publicpower.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    publicpowers = client.PublicPower().list({})
+    for publicpower in publicpowers:
+        print(publicpower)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = EnergyChartsApi2SDK.test()
 
-result = client.publicpower.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+publicpower = client.PublicPower().load({"id": "test01"})
+# publicpower contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -221,7 +224,7 @@ API path: `/public_power`
 
 ### PublicPower
 
-Create an instance: `const public_power = client.public_power`
+Create an instance: `public_power = client.PublicPower()`
 
 #### Operations
 
@@ -238,8 +241,8 @@ Create an instance: `const public_power = client.public_power`
 
 #### Example: List
 
-```ts
-const public_powers = await client.public_power.list()
+```python
+public_powers = client.PublicPower().list({})
 ```
 
 
@@ -313,7 +316,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-publicpower = client.publicpower
+publicpower = client.PublicPower()
 publicpower.load({"id": "example_id"})
 
 # publicpower.data_get() now returns the loaded publicpower data
