@@ -21,7 +21,7 @@ PublicPower = Struct.new(
   keyword_init: true
 )
 
-# Match filter for PublicPower#list (any subset of PublicPower fields).
+# Request payload for PublicPower#list.
 #
 # @!attribute [rw] data
 #   @return [Array, nil]

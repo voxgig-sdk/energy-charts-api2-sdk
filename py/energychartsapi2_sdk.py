@@ -221,7 +221,7 @@ class EnergyChartsApi2SDK:
 
 
     def PublicPower(self, data=None) -> "PublicPowerEntity":
-        """Entity factory: client.PublicPower().list({}) / client.PublicPower().load({"id": ...})."""
+        """Entity factory: client.PublicPower().list() / client.PublicPower().load({"id": ...})."""
         from entity.public_power_entity import PublicPowerEntity
         return PublicPowerEntity(self, data)
 

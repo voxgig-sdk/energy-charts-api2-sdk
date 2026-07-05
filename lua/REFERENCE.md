@@ -90,8 +90,8 @@ local public_power = client:PublicPower(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `data` | `table` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

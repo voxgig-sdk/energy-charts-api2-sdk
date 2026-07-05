@@ -8,7 +8,7 @@ Complete API reference for the EnergyChartsApi2 Python SDK.
 ### Constructor
 
 ```python
-from energy-charts-api2_sdk import EnergyChartsApi2SDK
+from energychartsapi2_sdk import EnergyChartsApi2SDK
 
 client = EnergyChartsApi2SDK(options)
 ```
@@ -87,17 +87,17 @@ public_power = client.PublicPower()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `data` | `list` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.PublicPower().list({})
+results = client.PublicPower().list()
 for public_power in results:
     print(public_power)
 ```

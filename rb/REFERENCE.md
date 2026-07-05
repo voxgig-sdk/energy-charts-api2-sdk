@@ -8,7 +8,7 @@ Complete API reference for the EnergyChartsApi2 Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'energy-charts-api2_sdk'
+require_relative 'EnergyChartsApi2_sdk'
 
 client = EnergyChartsApi2SDK.new(options)
 ```
@@ -93,17 +93,17 @@ public_power = client.PublicPower
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `data` | `Array` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.PublicPower.list(nil)
+results = client.PublicPower.list
 ```
 
 ### Common Methods

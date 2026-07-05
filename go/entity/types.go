@@ -14,8 +14,7 @@ type PublicPower struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// PublicPowerListMatch mirrors the public_power fields as an all-optional match
-// filter (Go analog of Partial<PublicPower>).
+// PublicPowerListMatch is the typed request payload for PublicPower.ListTyped.
 type PublicPowerListMatch struct {
 	Data *[]any `json:"data,omitempty"`
 	Name *string `json:"name,omitempty"`

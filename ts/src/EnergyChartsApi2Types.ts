@@ -10,5 +10,8 @@ export interface PublicPower {
   name?: string
 }
 
-export type PublicPowerListMatch = Partial<PublicPower>
+export interface PublicPowerListMatch {
+  data?: any[]
+  name?: string
+}
 

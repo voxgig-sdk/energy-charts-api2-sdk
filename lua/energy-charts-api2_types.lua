@@ -11,6 +11,8 @@
 ---@field name? string
 
 ---@class PublicPowerListMatch
+---@field data? table
+---@field name? string
 
 local M = {}
 

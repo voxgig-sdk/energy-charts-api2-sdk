@@ -116,8 +116,8 @@ const public_power = client.PublicPower()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `data` | `any[]` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

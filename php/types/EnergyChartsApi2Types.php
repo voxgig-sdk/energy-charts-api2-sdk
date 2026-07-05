@@ -19,7 +19,7 @@ class PublicPower
     public ?string $name = null;
 }
 
-/** Match filter for PublicPower#list (any subset of PublicPower fields). */
+/** Request payload for PublicPower#list. */
 class PublicPowerListMatch
 {
     public ?array $data = null;
