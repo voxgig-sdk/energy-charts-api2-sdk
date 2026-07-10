@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // List publicpower records — the value is the array of records itself.
-    publicpowers, err := client.PublicPower(nil).List(nil, nil)
+    // List publicPower records — the value is the array of records itself.
+    publicPowers, err := client.PublicPower(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range publicpowers.([]any) {
+    for _, item := range publicPowers.([]any) {
         fmt.Println(item)
     }
 }
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-publicpower, err := client.PublicPower(nil).List(
+publicPower, err := client.PublicPower(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(publicpower) // the returned mock data
+fmt.Println(publicPower) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -247,9 +247,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    publicpower, err := client.PublicPower(nil).List(map[string]any{/* fields */}, nil)
+    publicPower, err := client.PublicPower(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // publicpower is the returned record
+    // publicPower is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -274,7 +274,7 @@ API path: `/public_power`
 
 ### PublicPower
 
-Create an instance: `public_power := client.PublicPower(nil)`
+Create an instance: `publicPower := client.PublicPower(nil)`
 
 #### Operations
 
@@ -292,11 +292,11 @@ Create an instance: `public_power := client.PublicPower(nil)`
 #### Example: List
 
 ```go
-public_powers, err := client.PublicPower(nil).List(nil, nil)
+publicPowers, err := client.PublicPower(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(public_powers) // the array of records
+fmt.Println(publicPowers) // the array of records
 ```
 
 

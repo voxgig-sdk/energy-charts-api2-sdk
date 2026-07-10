@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## PublicPowerEntity
 
 ```go
-public_power := client.PublicPower(nil)
+publicPower := client.PublicPower(nil)
+fmt.Println(publicPower.GetName()) // "public_power"
 ```
 
 ### Fields
@@ -108,6 +109,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.PublicPower(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

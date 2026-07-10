@@ -15,9 +15,9 @@ main: {
           url: "https://api.energy-charts.info"
         }
       ]
+      summary: "Provides access to energy data."
       title: "Energy-Charts API"
       version: "1.0.0"
+      website: "https://energy-charts.info"
     }
   }
-}
-

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -230,14 +227,17 @@
           "url": "https://www.freepublicapis.com/api/random"
         },
         "description": "Provides access to energy data. Allows users to retrieve and analyze energy consumption information.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.energy-charts.info"
           }
         ],
+        "summary": "Provides access to energy data.",
         "title": "Energy-Charts API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://energy-charts.info"
       },
       "option": {},
       "target": {
@@ -290,6 +290,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -340,6 +343,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
