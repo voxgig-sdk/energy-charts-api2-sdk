@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- EnergyChartsApi2 SDK exists test
 
 local sdk = require("energy-charts-api2_sdk")
 
