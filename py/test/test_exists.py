@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# EnergyChartsApi2 SDK exists test
 
 import pytest
 from energychartsapi2_sdk import EnergyChartsApi2SDK

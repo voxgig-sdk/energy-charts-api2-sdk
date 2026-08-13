@@ -82,6 +82,7 @@ class EnergyChartsApi2Config
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public_power',
                   'parts' => [

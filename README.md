@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = EnergyChartsApi2SDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = EnergyChartsApi2SDK.test({
+  entity: {
+    public_power: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const publicpowers = await client.PublicPower().list()
-// publicpowers is an array of bare PublicPower records populated with mock data
+// publicpowers is an array of PublicPower entities, populated with mock data
+// — call publicpowers[0].data() for the record itself
 console.log(publicpowers)
 ```
 
@@ -110,7 +119,7 @@ import { EnergyChartsApi2SDK } from '@voxgig-sdk/energy-charts-api2'
 
 const client = new EnergyChartsApi2SDK()
 
-// List all publicpowers (returns PublicPower[])
+// List all publicpowers (returns PublicPowerEntity[] — .data() for the record)
 const publicpowers = await client.PublicPower().list()
 for (const publicpower of publicpowers) {
   console.log(publicpower)
@@ -343,6 +352,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.freepublicapis.com/api/random](https://www.freepublicapis.com/api/random)
 

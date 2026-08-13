@@ -218,9 +218,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local public_power, err = client:PublicPower():load()
+    local public_power, err = client:PublicPower():list()
     if err then error(err) end
-    -- public_power is the loaded record
+    -- public_power is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.

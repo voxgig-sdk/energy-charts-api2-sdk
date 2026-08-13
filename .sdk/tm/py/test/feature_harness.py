@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import EnergyChartsApi2Control
-from core.error import EnergyChartsApi2Error
-from core.result import EnergyChartsApi2Result
-from core.spec import EnergyChartsApi2Spec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import EnergyChartsApi2Control
+from projectname_sdk.core.error import EnergyChartsApi2Error
+from projectname_sdk.core.result import EnergyChartsApi2Result
+from projectname_sdk.core.spec import EnergyChartsApi2Spec
 
 
 # True when this SDK was generated with the named feature.

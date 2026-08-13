@@ -43,8 +43,8 @@ class EnergyChartsApi2TestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('ENERGYCHARTSAPI2_TEST_LIVE');
-        $override = self::getenv('ENERGYCHARTSAPI2_TEST_OVERRIDE');
+        $live = self::getenv('ENERGY_CHARTS_API2_TEST_LIVE');
+        $override = self::getenv('ENERGY_CHARTS_API2_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class EnergyChartsApi2TestRunner
             }
         }
 
-        $explain = self::getenv('ENERGYCHARTSAPI2_TEST_EXPLAIN');
+        $explain = self::getenv('ENERGY_CHARTS_API2_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['ENERGYCHARTSAPI2_TEST_EXPLAIN'] = $explain;
+            $m['ENERGY_CHARTS_API2_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

@@ -37,7 +37,7 @@ class PublicPowerEntity extends EnergyChartsApi2EntityBase<PublicPower> {
 
 
 
-  async list(this: any, reqmatch?: PublicPowerListMatch, ctrl?: Control): Promise<PublicPower[]> {
+  async list(this: any, reqmatch?: PublicPowerListMatch, ctrl?: Control): Promise<PublicPowerEntity[]> {
 
     const utility = this._utility
 

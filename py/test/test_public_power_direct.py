@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from energychartsapi2_sdk.utility.voxgig_struct import voxgig_struct as vs
 from energychartsapi2_sdk import EnergyChartsApi2SDK
-from core import helpers
+from energychartsapi2_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _public_power_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ENERGYCHARTSAPI__TEST_PUBLIC_POWER_ENTID": {},
-        "ENERGYCHARTSAPI__TEST_LIVE": "FALSE",
+        "ENERGY_CHARTS_API2_TEST_PUBLIC_POWER_ENTID": {},
+        "ENERGY_CHARTS_API2_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ENERGYCHARTSAPI__TEST_LIVE") == "TRUE"
+    live = env.get("ENERGY_CHARTS_API2_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

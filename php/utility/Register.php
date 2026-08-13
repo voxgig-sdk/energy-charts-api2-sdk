@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ EnergyChartsApi2Utility::setRegistrar(function (EnergyChartsApi2Utility $u): voi
     $u->prepare_params = [EnergyChartsApi2PrepareParams::class, 'call'];
     $u->prepare_path = [EnergyChartsApi2PreparePath::class, 'call'];
     $u->prepare_query = [EnergyChartsApi2PrepareQuery::class, 'call'];
+    $u->graphql_body = [EnergyChartsApi2Graphql::class, 'body'];
+    $u->graphql_errors = [EnergyChartsApi2Graphql::class, 'errors'];
     $u->result_basic = [EnergyChartsApi2ResultBasic::class, 'call'];
     $u->result_body = [EnergyChartsApi2ResultBody::class, 'call'];
     $u->result_headers = [EnergyChartsApi2ResultHeaders::class, 'call'];

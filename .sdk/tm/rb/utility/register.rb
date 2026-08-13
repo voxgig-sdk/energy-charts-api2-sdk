@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ EnergyChartsApi2Utility.registrar = ->(u) {
   u.prepare_params = EnergyChartsApi2Utilities::PrepareParams
   u.prepare_path = EnergyChartsApi2Utilities::PreparePath
   u.prepare_query = EnergyChartsApi2Utilities::PrepareQuery
+  u.graphql_body = EnergyChartsApi2Utilities::GraphqlBody
+  u.graphql_errors = EnergyChartsApi2Utilities::GraphqlErrors
   u.result_basic = EnergyChartsApi2Utilities::ResultBasic
   u.result_body = EnergyChartsApi2Utilities::ResultBody
   u.result_headers = EnergyChartsApi2Utilities::ResultHeaders

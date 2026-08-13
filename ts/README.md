@@ -35,7 +35,9 @@ const client = new EnergyChartsApi2SDK()
 
 ### 2. List publicpower records
 
-`list()` resolves to an array of PublicPower objects — iterate it directly:
+`list()` resolves to an array of PublicPower ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const publicpowers = await client.PublicPower().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = EnergyChartsApi2SDK.test()
 
 const publicpower = await client.PublicPower().list()
-// publicpower is a bare entity populated with mock response data
+// publicpower is the entity, populated with mock response data
+// — call publicpower.data() for the record itself
 console.log(publicpower)
 ```
 

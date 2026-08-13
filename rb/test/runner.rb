@@ -23,8 +23,8 @@ module EnergyChartsApi2TestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ENERGYCHARTSAPI2_TEST_LIVE")
-    override = getenv("ENERGYCHARTSAPI2_TEST_OVERRIDE")
+    live = getenv("ENERGY_CHARTS_API2_TEST_LIVE")
+    override = getenv("ENERGY_CHARTS_API2_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module EnergyChartsApi2TestRunner
       end
     end
 
-    explain = getenv("ENERGYCHARTSAPI2_TEST_EXPLAIN")
-    m["ENERGYCHARTSAPI2_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ENERGY_CHARTS_API2_TEST_EXPLAIN")
+    m["ENERGY_CHARTS_API2_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end
