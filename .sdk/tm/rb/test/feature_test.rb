@@ -15,7 +15,7 @@ require_relative "../EnergyChartsApi2_sdk"
 module EnergyChartsApi2FeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = EnergyChartsApi2Config.make_config["feature"]
+    f = EnergyChartsApi2Config.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

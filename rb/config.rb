@@ -1,6 +1,20 @@
 # EnergyChartsApi2 SDK configuration
 
 module EnergyChartsApi2Config
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -26,18 +40,12 @@ module EnergyChartsApi2Config
         "public_power" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "data",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "name",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
           ],
           "name" => "public_power",
@@ -47,32 +55,25 @@ module EnergyChartsApi2Config
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "de",
                         "kind" => "query",
                         "name" => "country",
                         "orig" => "country",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "end",
                         "orig" => "end",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "start",
                         "orig" => "start",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -94,10 +95,8 @@ module EnergyChartsApi2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {

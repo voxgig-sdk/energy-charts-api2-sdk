@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://api.energy-charts.info',
+    base: "https://api.energy-charts.info",
 
     headers: {
       "content-type": "application/json"
@@ -55,18 +55,12 @@ class Config {
     "public_power": {
       "fields": [
         {
-          "active": true,
           "name": "data",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         }
       ],
       "name": "public_power",
@@ -76,32 +70,25 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "de",
                     "kind": "query",
                     "name": "country",
                     "orig": "country",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -122,11 +109,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {

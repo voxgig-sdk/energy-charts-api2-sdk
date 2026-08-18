@@ -28,7 +28,7 @@ class EnergyChartsApi2SDK
     utility = EnergyChartsApi2Utility.new
     @_utility = utility
 
-    config = EnergyChartsApi2Config.make_config
+    config = EnergyChartsApi2Config.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

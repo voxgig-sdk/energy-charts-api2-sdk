@@ -1,5 +1,8 @@
 -- EnergyChartsApi2 SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -25,18 +28,12 @@ local function make_config()
       ["public_power"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "data",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "name",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
         },
         ["name"] = "public_power",
@@ -46,32 +43,25 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "de",
                       ["kind"] = "query",
                       ["name"] = "country",
                       ["orig"] = "country",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "end",
                       ["orig"] = "end",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "start",
                       ["orig"] = "start",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                   },
@@ -93,10 +83,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
         },
         ["relations"] = {
