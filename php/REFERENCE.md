@@ -92,8 +92,8 @@ $public_power = $client->PublicPower();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | No |  |
-| `name` | `string` | No |  |
+| `data` | `array` | No | Energy production values in MW |
+| `name` | `string` | No | Type of energy production |
 
 ### Operations
 

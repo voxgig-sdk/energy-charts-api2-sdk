@@ -98,8 +98,8 @@ fmt.Println(publicPower.GetName()) // "public_power"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `[]any` | No |  |
-| `name` | `string` | No |  |
+| `data` | `[]any` | No | Energy production values in MW |
+| `name` | `string` | No | Type of energy production |
 
 ### Operations
 

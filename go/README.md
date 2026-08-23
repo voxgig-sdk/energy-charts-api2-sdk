@@ -6,7 +6,7 @@ The Golang SDK for the EnergyChartsApi2 API — an entity-oriented client using 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.PublicPower(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -260,8 +260,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
-| `"name"` |  |
+| `"data"` | Energy production values in MW |
+| `"name"` | Type of energy production |
 
 Operations: List.
 
@@ -286,8 +286,8 @@ Create an instance: `publicPower := client.PublicPower(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `[]any` |  |
-| `name` | `string` |  |
+| `data` | `[]any` | Energy production values in MW |
+| `name` | `string` | Type of energy production |
 
 #### Example: List
 

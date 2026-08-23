@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -287,8 +287,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `name` |  |
+| `data` | Energy production values in MW |
+| `name` | Type of energy production |
 
 Operations: list.
 
@@ -313,8 +313,8 @@ Create an instance: `const public_power = client.PublicPower()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `any[]` |  |
-| `name` | `string` |  |
+| `data` | `any[]` | Energy production values in MW |
+| `name` | `string` | Type of energy production |
 
 #### Example: List
 

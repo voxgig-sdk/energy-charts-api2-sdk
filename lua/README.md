@@ -231,8 +231,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `name` |  |
+| `data` | Energy production values in MW |
+| `name` | Type of energy production |
 
 Operations: List.
 
@@ -257,8 +257,8 @@ Create an instance: `local public_power = client:PublicPower(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
-| `name` | `string` |  |
+| `data` | `table` | Energy production values in MW |
+| `name` | `string` | Type of energy production |
 
 #### Example: List
 

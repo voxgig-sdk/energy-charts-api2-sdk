@@ -93,8 +93,8 @@ public_power = client.PublicPower
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Array` | No |  |
-| `name` | `String` | No |  |
+| `data` | `Array` | No | Energy production values in MW |
+| `name` | `String` | No | Type of energy production |
 
 ### Operations
 

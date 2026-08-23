@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'EnergyChartsApi2',
+        slug: "energy-charts-api2",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,10 +67,12 @@ class Config {
       "fields": [
         {
           "name": "data",
+          "short": "Energy production values in MW",
           "type": "`$ARRAY`"
         },
         {
           "name": "name",
+          "short": "Type of energy production",
           "type": "`$STRING`"
         }
       ],

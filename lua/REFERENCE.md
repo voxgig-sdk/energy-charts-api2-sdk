@@ -90,8 +90,8 @@ local public_power = client:PublicPower(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | No |  |
-| `name` | `string` | No |  |
+| `data` | `table` | No | Energy production values in MW |
+| `name` | `string` | No | Type of energy production |
 
 ### Operations
 

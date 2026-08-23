@@ -237,8 +237,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `name` |  |
+| `data` | Energy production values in MW |
+| `name` | Type of energy production |
 
 Operations: List.
 
@@ -263,8 +263,8 @@ Create an instance: `public_power = client.PublicPower`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Array` |  |
-| `name` | `String` |  |
+| `data` | `Array` | Energy production values in MW |
+| `name` | `String` | Type of energy production |
 
 #### Example: List
 

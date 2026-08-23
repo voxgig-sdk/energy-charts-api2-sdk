@@ -247,8 +247,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `name` |  |
+| `data` | Energy production values in MW |
+| `name` | Type of energy production |
 
 Operations: List.
 
@@ -273,8 +273,8 @@ Create an instance: `$public_power = $client->PublicPower();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
-| `name` | `string` |  |
+| `data` | `array` | Energy production values in MW |
+| `name` | `string` | Type of energy production |
 
 #### Example: List
 

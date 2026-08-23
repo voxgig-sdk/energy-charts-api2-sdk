@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "EnergyChartsApi2",
+      slug = "energy-charts-api2",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -29,10 +32,12 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "data",
+            ["short"] = "Energy production values in MW",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Type of energy production",
             ["type"] = "`$STRING`",
           },
         },

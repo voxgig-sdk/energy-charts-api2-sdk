@@ -36,12 +36,14 @@
               "active": true,
               "name": "data",
               "req": false,
+              "short": "Energy production values in MW",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Type of energy production",
               "type": "`$STRING`"
             }
           ],

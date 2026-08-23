@@ -243,8 +243,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `name` |  |
+| `data` | Energy production values in MW |
+| `name` | Type of energy production |
 
 Operations: List.
 
@@ -269,8 +269,8 @@ Create an instance: `public_power = client.PublicPower()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `list` |  |
-| `name` | `str` |  |
+| `data` | `list` | Energy production values in MW |
+| `name` | `str` | Type of energy production |
 
 #### Example: List
 

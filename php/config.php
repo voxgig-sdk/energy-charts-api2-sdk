@@ -33,6 +33,9 @@ class EnergyChartsApi2Config
         return [
             "main" => [
                 "name" => "EnergyChartsApi2",
+                "slug" => "energy-charts-api2",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -55,10 +58,12 @@ class EnergyChartsApi2Config
           'fields' => [
             [
               'name' => 'data',
+              'short' => 'Energy production values in MW',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'name',
+              'short' => 'Type of energy production',
               'type' => '`$STRING`',
             ],
           ],
