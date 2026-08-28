@@ -11,7 +11,8 @@ export interface PublicPower {
 }
 
 export interface PublicPowerListMatch {
-  data?: any[]
-  name?: string
+  country?: string
+  end?: string
+  start?: string
 }
 

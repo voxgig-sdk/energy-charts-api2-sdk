@@ -22,5 +22,6 @@ class PublicPower(TypedDict, total=False):
 
 
 class PublicPowerListMatch(TypedDict, total=False):
-    data: list
-    name: str
+    country: str
+    end: str
+    start: str

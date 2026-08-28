@@ -20,8 +20,9 @@ type PublicPower struct {
 
 // PublicPowerListMatch is the typed request payload for PublicPower.ListTyped.
 type PublicPowerListMatch struct {
-	Data *[]any `json:"data,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Country *string `json:"country,omitempty"`
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

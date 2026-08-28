@@ -11,8 +11,9 @@
 ---@field name? string
 
 ---@class PublicPowerListMatch
----@field data? table
----@field name? string
+---@field country? string
+---@field end? string
+---@field start? string
 
 local M = {}
 

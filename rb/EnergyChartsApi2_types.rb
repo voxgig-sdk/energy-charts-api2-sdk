@@ -23,14 +23,18 @@ PublicPower = Struct.new(
 
 # Request payload for PublicPower#list.
 #
-# @!attribute [rw] data
-#   @return [Array, nil]
+# @!attribute [rw] country
+#   @return [String, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] end
+#   @return [String, nil]
+#
+# @!attribute [rw] start
 #   @return [String, nil]
 PublicPowerListMatch = Struct.new(
-  :data,
-  :name,
+  :country,
+  :end,
+  :start,
   keyword_init: true
 )
 

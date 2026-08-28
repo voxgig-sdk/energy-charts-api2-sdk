@@ -22,7 +22,8 @@ class PublicPower
 /** Request payload for PublicPower#list. */
 class PublicPowerListMatch
 {
-    public ?array $data = null;
-    public ?string $name = null;
+    public ?string $country = null;
+    public ?string $end = null;
+    public ?string $start = null;
 }
 
