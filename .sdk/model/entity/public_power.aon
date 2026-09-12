@@ -53,8 +53,10 @@ main: kit: entity: public_power: {
           }
           method: "GET"
           orig: "/public_power"
-          parts: [
-            "public_power"
+          segments: [
+            {
+              lit: "public_power"
+            }
           ]
           select: {
             exist: [

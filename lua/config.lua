@@ -75,8 +75,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/public_power",
-                ["parts"] = {
-                  "public_power",
+                ["segments"] = {
+                  {
+                    ["lit"] = "public_power",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -88,6 +90,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "public_power",
                 },
               },
             },

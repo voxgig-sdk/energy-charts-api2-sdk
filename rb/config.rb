@@ -87,8 +87,10 @@ module EnergyChartsApi2Config
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/public_power",
-                  "parts" => [
-                    "public_power",
+                  "segments" => [
+                    {
+                      "lit" => "public_power",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -101,6 +103,9 @@ module EnergyChartsApi2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "public_power",
+                  ],
                 },
               ],
             },
