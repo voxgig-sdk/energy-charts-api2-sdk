@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { EnergyChartsApi2SDK } from '@voxgig-sdk/energy-charts-api2'
+import { EnergyChartsApi2SDK } from '@voxgig-sdk/energy-charts-api2-sdk'
 
 const client = new EnergyChartsApi2SDK()
 ```
@@ -405,7 +405,7 @@ energy-charts-api2/
 Import the SDK from the package root:
 
 ```ts
-import { EnergyChartsApi2SDK } from '@voxgig-sdk/energy-charts-api2'
+import { EnergyChartsApi2SDK } from '@voxgig-sdk/energy-charts-api2-sdk'
 ```
 
 ### Entity state
