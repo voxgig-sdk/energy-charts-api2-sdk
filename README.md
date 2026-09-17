@@ -105,12 +105,12 @@ local results, err = client:PublicPower():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/energy-charts-api2-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/releases) |
-| Python | `voxgig-sdk-energy-charts-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/releases) |
-| PHP | `voxgig-sdk/energy-charts-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/releases) |
+| TypeScript | `@voxgig-sdk/energy-charts-api2-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/tags) |
+| Python | `voxgig-sdk-energy-charts-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/tags) |
+| PHP | `voxgig-sdk/energy-charts-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/energy-charts-api2-sdk/go` | `go get github.com/voxgig-sdk/energy-charts-api2-sdk/go@latest` |
-| Ruby | `voxgig-sdk-energy-charts-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/releases) |
-| Lua | `voxgig-sdk-energy-charts-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/releases) |
+| Ruby | `voxgig-sdk-energy-charts-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/tags) |
+| Lua | `voxgig-sdk-energy-charts-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/energy-charts-api2-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/energy-charts-api2-sdk/go-cli` | `go install github.com/voxgig-sdk/energy-charts-api2-sdk/go-cli/cmd/energy-charts-api2@latest` |
 | Go MCP server | `github.com/voxgig-sdk/energy-charts-api2-sdk/go-mcp` | `go get github.com/voxgig-sdk/energy-charts-api2-sdk/go-mcp@latest` |
 

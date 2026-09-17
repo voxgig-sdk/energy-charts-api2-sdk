@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      public_power: {
-      },
-
+        public_power: {
+        },
+  
     }
   }
 
