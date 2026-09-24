@@ -113,13 +113,15 @@ class EnergyChartsApi2Config
           'fields' => [
             [
               'name' => 'data',
-              'short' => 'Energy production values in MW',
+              'title' => 'Data',
               'type' => '`$ARRAY`',
+              'short' => 'Energy production values in MW',
             ],
             [
               'name' => 'name',
-              'short' => 'Type of energy production',
+              'title' => 'Name',
               'type' => '`$STRING`',
+              'short' => 'Type of energy production',
             ],
           ],
           'name' => 'public_power',
@@ -129,29 +131,6 @@ class EnergyChartsApi2Config
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'de',
-                        'kind' => 'query',
-                        'name' => 'country',
-                        'orig' => 'country',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public_power',
@@ -160,19 +139,43 @@ class EnergyChartsApi2Config
                       'lit' => 'public_power',
                     ],
                   ],
+                  'parts' => [
+                    'public_power',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'country',
+                        'orig' => 'country',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'de',
+                      ],
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'country',
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'public_power',
                   ],
                 ],
               ],

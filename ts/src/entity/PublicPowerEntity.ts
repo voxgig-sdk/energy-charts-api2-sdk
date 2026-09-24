@@ -19,7 +19,6 @@ import type {
   PublicPowerListMatch,
 } from '../EnergyChartsApi2Types'
 
-// TODO: needs Entity superclass
 class PublicPowerEntity extends EnergyChartsApi2EntityBase<PublicPower> {
 
   constructor(client: EnergyChartsApi2SDK, entopts: any) {

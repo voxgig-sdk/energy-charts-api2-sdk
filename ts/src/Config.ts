@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -139,13 +132,15 @@ class Config {
       "fields": [
         {
           "name": "data",
-          "short": "Energy production values in MW",
-          "type": "`$ARRAY`"
+          "title": "Data",
+          "type": "`$ARRAY`",
+          "short": "Energy production values in MW"
         },
         {
           "name": "name",
-          "short": "Type of energy production",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Type of energy production"
         }
       ],
       "name": "public_power",
@@ -155,29 +150,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "de",
-                    "kind": "query",
-                    "name": "country",
-                    "orig": "country",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/public_power",
@@ -186,20 +158,44 @@ class Config {
                   "lit": "public_power"
                 }
               ],
+              "parts": [
+                "public_power"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "country",
+                    "orig": "country",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "de"
+                  },
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "country",
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "public_power"
-              ]
+              }
             }
           ]
         }

@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PublicPowerEntity = void 0;
 const EnergyChartsApi2EntityBase_1 = require("../EnergyChartsApi2EntityBase");
-// TODO: needs Entity superclass
 class PublicPowerEntity extends EnergyChartsApi2EntityBase_1.EnergyChartsApi2EntityBase {
     constructor(client, entopts) {
         super(client, entopts);

@@ -43,7 +43,7 @@ local publicpowers, err = client:PublicPower():list()
 if err then error(err) end
 
 for _, item in ipairs(publicpowers) do
-  print(item["name"])
+  print(item)
 end
 ```
 

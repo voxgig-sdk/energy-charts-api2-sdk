@@ -91,13 +91,15 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "data",
-						"short": "Energy production values in MW",
+						"title": "Data",
 						"type": "`$ARRAY`",
+						"short": "Energy production values in MW",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Type of energy production",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Type of energy production",
 					},
 				},
 				"name": "public_power",
@@ -107,29 +109,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "de",
-											"kind": "query",
-											"name": "country",
-											"orig": "country",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/public_power",
@@ -138,19 +117,43 @@ func MakeConfig() map[string]any {
 										"lit": "public_power",
 									},
 								},
+								"parts": []any{
+									"public_power",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "country",
+											"orig": "country",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "de",
+										},
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"country",
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"public_power",
 								},
 							},
 						},
